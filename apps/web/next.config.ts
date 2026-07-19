@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname, "../.."),
   transpilePackages: [
     "@alpha-dfs/shared",
+    "@alpha-dfs/adi-platform",
     "@alpha-dfs/connectors",
     "@alpha-dfs/database",
     "@alpha-dfs/observability",
