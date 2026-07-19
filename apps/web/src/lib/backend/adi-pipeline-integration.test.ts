@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { resetAdiConfigCache } from "@alpha-dfs/adi-platform";
+import { resetAdiBootstrap } from "@/lib/backend/adi-bootstrap";
 import { clearCachedAnalysisBundle } from "@/lib/backend/analysis-cache";
 import { resetAnalysisRun } from "@/lib/backend/analysis-state";
 import { createEngineRegistry } from "@/lib/backend/engines/create-engine-registry";
@@ -16,6 +17,7 @@ describe("ADI pipeline integration (M4)", () => {
     resetTestDatabaseFlag();
     resetPipelineExecutionManager();
     resetAdiConfigCache();
+    resetAdiBootstrap();
     delete process.env.ADI_PLATFORM_ENABLED;
     await ensureTestDatabase();
   });

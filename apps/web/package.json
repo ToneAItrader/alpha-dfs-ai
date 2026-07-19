@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@alpha-dfs/adi-platform": "*",
+    "@alpha-dfs/adi-providers": "*",
     "@alpha-dfs/connectors": "*",
     "@alpha-dfs/database": "*",
     "@alpha-dfs/evidence": "*",

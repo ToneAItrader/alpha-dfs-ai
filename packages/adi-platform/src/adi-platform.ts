@@ -2,7 +2,8 @@ import type { AnalysisRunContext, AdiNormalizedEvidenceBundle } from "@alpha-dfs
 import { structuredLog } from "@alpha-dfs/observability";
 import { createAgentOrchestrator } from "./agent-orchestrator";
 import { isAdiPlatformEnabled } from "./adi-config";
-import { createConnectorManagerStub } from "./connector-manager";
+import { createConnectorManager } from "./connector-manager";
+import type { EvidenceProvider } from "./provider-contract";
 import { createEventBus } from "./event-bus";
 import { createEvidenceCache } from "./evidence-cache";
 import { recordPlatformReady } from "./metrics";
@@ -12,24 +13,41 @@ export type AdiPlatform = {
   prepare(context: AnalysisRunContext, correlationId?: string): Promise<void>;
   complete(runId: string, success: boolean, durationMs: number): Promise<void>;
   getNormalizedEvidence(): AdiNormalizedEvidenceBundle | undefined;
+  getCachedPackages(): import("@alpha-dfs/shared").AdiEvidencePackage[];
   shutdown(): Promise<void>;
 };
 
 export type AdiPlatformDeps = {
   enabled?: boolean;
+  providers?: EvidenceProvider[];
 };
+
+let defaultProviders: EvidenceProvider[] = [];
+
+export function registerAdiEvidenceProviders(providers: EvidenceProvider[]): void {
+  defaultProviders = providers;
+  resetAdiPlatform();
+}
 
 export function createAdiPlatform(deps: AdiPlatformDeps = {}): AdiPlatform {
   const enabled = deps.enabled ?? isAdiPlatformEnabled();
+  const providers = deps.providers ?? defaultProviders;
   const eventBus = createEventBus();
   const registry = createSourceRegistry();
   const cache = createEvidenceCache();
-  const connectorManager = createConnectorManagerStub();
+  const connectorManager = createConnectorManager(registry);
+
+  for (const provider of providers) {
+    connectorManager.register(provider);
+  }
+
+  const fetchEnabled = providers.length > 0;
   const orchestrator = createAgentOrchestrator({
     eventBus,
     registry,
     connectorManager,
-    fetchEnabled: false,
+    evidenceCache: cache,
+    fetchEnabled,
   });
 
   let prepared = false;
@@ -47,6 +65,7 @@ export function createAdiPlatform(deps: AdiPlatformDeps = {}): AdiPlatform {
       structuredLog("info", "adi", "adi.prepare", "ADI platform preparing", {
         runId: context.runId,
         slateId: context.slateId,
+        providerCount: providers.length,
       });
 
       await orchestrator.onPipelineStarted(context, correlationId);
@@ -59,6 +78,13 @@ export function createAdiPlatform(deps: AdiPlatformDeps = {}): AdiPlatform {
         return undefined;
       }
       return undefined;
+    },
+
+    getCachedPackages() {
+      if (!enabled || !activeRunId) {
+        return [];
+      }
+      return cache.get(activeRunId) ?? [];
     },
 
     async complete(runId, success, durationMs) {

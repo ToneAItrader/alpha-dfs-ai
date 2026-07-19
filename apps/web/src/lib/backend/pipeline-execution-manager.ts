@@ -19,6 +19,7 @@ import {
   withTimeout,
 } from "@alpha-dfs/observability";
 import { getAdiPlatform, isAdiPlatformEnabled, resetAdiPlatform } from "@alpha-dfs/adi-platform";
+import { ensureAdiProvidersRegistered, resetAdiBootstrap } from "@/lib/backend/adi-bootstrap";
 import { assembleAnalysisBundle } from "@/lib/backend/dto-assembler";
 import { setCachedAnalysisBundle } from "@/lib/backend/analysis-cache";
 import type { AnalysisBundleResponseDto } from "@/types/dto/analysis-responses.dto";
@@ -178,6 +179,9 @@ export function createPipelineExecutionManager(): PipelineExecutionManager {
           const outputs: Partial<EngineOutputs> = {};
           const completedAt = new Date().toISOString();
           const adiEnabled = isAdiPlatformEnabled();
+          if (adiEnabled) {
+            ensureAdiProvidersRegistered();
+          }
           const adiPlatform = adiEnabled ? getAdiPlatform() : null;
 
           try {
@@ -291,4 +295,5 @@ export function getPipelineExecutionManager(): PipelineExecutionManager {
 export function resetPipelineExecutionManager(): void {
   cachedManager = null;
   resetAdiPlatform();
+  resetAdiBootstrap();
 }

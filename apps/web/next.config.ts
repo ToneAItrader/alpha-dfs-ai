@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   transpilePackages: [
     "@alpha-dfs/shared",
     "@alpha-dfs/adi-platform",
+    "@alpha-dfs/adi-providers",
     "@alpha-dfs/connectors",
     "@alpha-dfs/database",
     "@alpha-dfs/observability",

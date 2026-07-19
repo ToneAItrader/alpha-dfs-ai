@@ -2,6 +2,7 @@ export { isAdiPlatformEnabled, isProviderEnabled, resetAdiConfigCache, getKnownP
 export {
   createAdiPlatform,
   getAdiPlatform,
+  registerAdiEvidenceProviders,
   resetAdiPlatform,
   type AdiPlatform,
   type AdiPlatformDeps,

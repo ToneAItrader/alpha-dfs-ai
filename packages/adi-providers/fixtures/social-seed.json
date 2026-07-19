@@ -1,0 +1,31 @@
+{
+  "signals": [
+    {
+      "sourceId": "social-reddit",
+      "playerName": "Ja'Marr Chase",
+      "team": "CIN",
+      "sentiment": 0.72,
+      "postCount": 48,
+      "rumorKeywords": 0,
+      "confidence": 0.7
+    },
+    {
+      "sourceId": "social-x",
+      "playerName": "Unknown Rookie",
+      "team": "NYG",
+      "sentiment": -0.2,
+      "postCount": 2,
+      "rumorKeywords": 1,
+      "confidence": 0.35
+    },
+    {
+      "sourceId": "social-bluesky",
+      "playerName": "Christian McCaffrey",
+      "team": "SF",
+      "sentiment": 0.55,
+      "postCount": 31,
+      "rumorKeywords": 0,
+      "confidence": 0.68
+    }
+  ]
+}

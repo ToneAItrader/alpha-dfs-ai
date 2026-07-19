@@ -1,0 +1,23 @@
+{
+  "articles": [
+    {
+      "sourceId": "dfs-rg",
+      "playerName": "Breece Hall",
+      "team": "NYJ",
+      "chalkProbability": 0.28,
+      "leverageSignal": 0.62,
+      "stackRecommendation": "NYJ stack",
+      "siteTier": 0.9,
+      "confidence": 0.8
+    },
+    {
+      "sourceId": "dfs-stokastic",
+      "playerName": "Amon-Ra St. Brown",
+      "team": "DET",
+      "chalkProbability": 0.31,
+      "leverageSignal": 0.45,
+      "siteTier": 0.85,
+      "confidence": 0.75
+    }
+  ]
+}
