@@ -1,0 +1,86 @@
+{
+  "program": "V2.2 ADI Platform",
+  "milestone": "M8",
+  "branch": "v2/v2.2-adi",
+  "baselineTag": "v2.1.0",
+  "baselineCommit": "dd52641",
+  "headCommit": "3f06bed",
+  "validatedAt": "2026-07-19T23:02:00.000Z",
+  "validator": "Composer 2.5",
+  "environment": {
+    "connectorMode": "seed",
+    "nodeEnv": "development",
+    "ci": true
+  },
+  "milestones": {
+    "M4": { "status": "certified", "review": "docs/architecture/V2_2_M4_CERTIFICATION_REVIEW.md" },
+    "M5": { "status": "certified", "review": "docs/architecture/V2_2_M5_CERTIFICATION_REVIEW.md" },
+    "M6": { "status": "certified", "review": "docs/architecture/V2_2_M6_CERTIFICATION_REVIEW.md" },
+    "M7": { "status": "certified", "review": "docs/architecture/V2_2_M7_CERTIFICATION_REVIEW.md" },
+    "M8": { "status": "complete", "report": "docs/architecture/V2_2_M8_VALIDATION_REPORT.md" }
+  },
+  "gates": {
+    "L1_unit": { "status": "pass", "tests": 353 },
+    "L2_integration": { "status": "pass", "scenarios": ["INT-1", "INT-2", "INT-3", "INT-4", "INT-5", "INT-6", "INT-7"] },
+    "L3_e2e": { "status": "partial", "v21Suite": { "passed": 11, "total": 11 }, "adiSuite": { "passed": 0, "total": 5, "note": "Deferred — integration coverage" } },
+    "L4_performance": { "status": "pass", "adiPipelineP95Ms": 14, "budgetMs": 30000 },
+    "L5_resilience": { "status": "pass" },
+    "L6_operational": { "status": "pass", "startupCert": true, "buildCert": true, "operationalCert": true },
+    "L7_architecture": { "status": "pass", "noAdiUi": true, "boundaryTests": true }
+  },
+  "testSummary": {
+    "workspaceTotal": 353,
+    "workspacePassed": 353,
+    "webUnit": 186,
+    "adiPlatform": 32,
+    "adiProviders": 49,
+    "evidenceFusion": 20,
+    "e2ePassed": 11,
+    "e2eTotal": 11,
+    "e2eAdiPlanned": 5,
+    "passRatePercent": 100
+  },
+  "build": {
+    "status": "pass",
+    "artifactPath": "apps/web/.next"
+  },
+  "benchmark": {
+    "script": "scripts/bench/adi-pipeline-bench.ts",
+    "iterations": 5,
+    "p95Ms": 14,
+    "gateMs": 30000,
+    "pass": true
+  },
+  "featureFlags": {
+    "ADI_PLATFORM_ENABLED": false,
+    "ADI_FUSION_ENABLED": true,
+    "ADI_LEARNING_ENABLED": false,
+    "ADI_PROVIDER_NEWS_ENABLED": false,
+    "ADI_PROVIDER_SOCIAL_ENABLED": false,
+    "ADI_PROVIDER_SPORTSBOOK_ENABLED": false,
+    "ADI_PROVIDER_CONSENSUS_ENABLED": false,
+    "ADI_PROVIDER_DFS_CONTENT_ENABLED": false,
+    "ADI_PROVIDER_BETTING_ENABLED": false,
+    "ADI_PROVIDER_HISTORICAL_LEARNING_ENABLED": false
+  },
+  "architectureCompliance": {
+    "abr001": "pass",
+    "adr019": "pass",
+    "adr020": "pass",
+    "adr021": "pass",
+    "adr022": "pass",
+    "noArchitecturalDrift": true,
+    "v21Compatibility": true
+  },
+  "knownLimitations": [
+    "ADI E2E tests E2E-ADI-1..5 not implemented",
+    "10-run memory soak not automated",
+    "Live startup cert requires DraftKings P0 configuration"
+  ],
+  "releaseClassification": {
+    "developmentComplete": true,
+    "releaseCandidate": true,
+    "productionReadyAdiEnabled": false
+  },
+  "releaseRecommendation": "Release Candidate — merge authorized with ADI disabled by default"
+}
