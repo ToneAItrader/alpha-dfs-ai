@@ -1,9 +1,9 @@
 # Version 2 Roadmap
 
-**Status:** V2.0 complete — V2.1 gate open  
+**Status:** V2.0 complete — V2.1 **Release Candidate** (Development Complete)  
 **Date:** 2026-07-19  
 **Scope lock (V1):** DraftKings · NFL · Classic Salary Cap  
-**Implementation gate:** [OPEN — V2_IMPLEMENTATION_GATE.md](./V2_IMPLEMENTATION_GATE.md)
+**Release:** [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md) · Tag `v2.1.0`
 
 ---
 
@@ -28,8 +28,8 @@ Version 2 expands Alpha DFS AI from a validated single-sport, single-platform ma
 | Phase | Theme | ADRs | Implementation |
 |-------|-------|------|----------------|
 | **V2.0 — Foundation** | Ops maturity, QA, deferred V1 gaps | ADR-004–008 | ✅ **Complete** — [V2_FOUNDATION_COMPLETION_RECORD.md](./V2_FOUNDATION_COMPLETION_RECORD.md) |
-| **V2.1 — Intelligence** | Slate UI, simulation, providers, ownership | ADR-010–018 | **Authorized** — [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md) |
-| **V2.2 — Platform** | FanDuel, multi-platform (Amendment 002) | TBD | Not started |
+| **V2.1 — Intelligence** | Slate UI, simulation, providers, ownership | ADR-010–018 | ✅ **Complete (RC)** — [V2_1_PROGRAM_COMPLETION_RECORD.md](./V2_1_PROGRAM_COMPLETION_RECORD.md) |
+| **V2.2 — ADI Platform** | Alternative Data Intelligence (internal) | TBD (ADR-019+) | 🚫 Not authorized |
 | **V2.3 — Sport** | NBA/MLB/NHL plugins (Amendment 003) | TBD | Not started |
 | **V2.4 — Advanced** | Contest, bankroll, late swap, AI (Amendment 004) | TBD | Not started |
 
@@ -53,17 +53,11 @@ V2.1 Intelligence (ADR-010..018)
   → Opus ADR review ✅ (Approve with revisions)
   → Phase 2A revisions ✅
   → Gate open ✅ (V2-CC-002)
-  → Implement V2.1 (branch v2/v2.1-intelligence) ← current
-  → Implement V2.1 (branch v2/v2.1-intelligence)
-  → Certify V2.1
+  → Implement V2.1 (branch v2/v2.1-intelligence) ✅
+  → Certify V2.1 ✅
+  → Release Candidate on `main` ✅
         ↓
-    ┌───┴───┐
-    ▼       ▼
-V2.2      V2.4
-Platform  Advanced
-(Amend 002) (Amend 004)
-    ↓
-V2.3 Sport (Amend 003)
+V2.2 ADI Platform (not authorized)
 ```
 
 Detail: [V2_DEPENDENCY_MAP.md](./V2_DEPENDENCY_MAP.md)
@@ -142,10 +136,11 @@ Background workers (general), automated lineup submission, mobile apps, multi-te
 - [x] Phase V2.1 capabilities have ADRs — ADR-010 through ADR-018
 - [x] Opus V2.1 ADR package review complete — [V2_1_ADR_PACKAGE_REVIEW.md](../reviews/V2_1_ADR_PACKAGE_REVIEW.md)
 - [x] Phase 2A ADR revisions applied (CF-1, HP-1–HP-4)
-- [x] V2.1 implementation gate explicitly opened — [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md)
+- [x] V2.1 implementation gate closed — [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md)
+- [x] V2.1 Release Candidate — [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md)
 
 ---
 
 ## Exactly one next action
 
-**V2.1-1 — Slate Intelligence (Composer 2.5):** See [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md).
+**V2.2 planning gate** — ABR-001 + V2.2 Phase Charter (not authorized until explicit approval). See Release Completion Program Phase 1.

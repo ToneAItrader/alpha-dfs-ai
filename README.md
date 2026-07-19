@@ -1,7 +1,8 @@
 # Alpha DFS AI
 
-**Status:** Version 1 — **Release candidate validated** — dual-track workflow active  
-**Workstreams:** [V1 Maintenance](./docs/operations/V1_MAINTENANCE_GOVERNANCE.md) (feature frozen) · [V2 Program](./docs/architecture/V2_PLANNING_GOVERNANCE.md) (V2.1 implementation authorized)  
+**Status:** Version 2.1 — **Release Candidate** (Development Complete)  
+**Workstreams:** [V1 Maintenance](./docs/operations/V1_MAINTENANCE_GOVERNANCE.md) · [V2 Program](./docs/architecture/V2_PLANNING_GOVERNANCE.md) (V2.1 complete; V2.2 locked)  
+**Release:** [V2.1 Release Notes](./docs/operations/releases/V2_1_RELEASE_NOTES.md) · Tag `v2.1.0`  
 **SOP:** [Dual-Track Workflow](./docs/operations/DUAL_TRACK_WORKFLOW.md) · [Cursor Implementation Protocol](./docs/CURSOR_IMPLEMENTATION_PROTOCOL.md)  
 **Charter:** [PROJECT_CHARTER.md](./PROJECT_CHARTER.md) · **Scope lock:** [Amendment 001](./docs/architecture/AMENDMENT_001_SCOPE_LOCK.md)
 
@@ -17,14 +18,15 @@
 
 ---
 
-## Platform status (Tasks 11.1–11.9)
+## Platform status (V2.1 Release Candidate)
 
 | Area | Status |
 |------|--------|
-| Backend pipeline | Complete — real engines, live connectors |
-| Observability | Complete — metrics, traces, diagnostics |
-| Release certification | Complete — startup, deploy, smoke, backup |
-| Frontend | Complete (Task 10) — frozen DTO → Mapper → ViewModel → Presentation |
+| V2.1 Intelligence (9 capabilities) | ✅ Complete — ADR-010–018 |
+| Backend pipeline | ✅ 12-phase intelligence pipeline |
+| Connectors | ✅ Injury, Vegas, Weather (seed + live paths) |
+| Observability & ops | ✅ V2.0 foundation (telemetry, backup, E2E) |
+| Validation | ✅ 247 tests · 11/11 E2E · production build |
 
 **Operator guide:** [PRODUCTION_OPERATIONS_GUIDE.md](./docs/operations/PRODUCTION_OPERATIONS_GUIDE.md)
 

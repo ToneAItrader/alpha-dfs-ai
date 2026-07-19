@@ -1,6 +1,6 @@
 # ADR-017 — V2.1-8 Multi-Lineup Exposure Management
 
-**Status:** Accepted (Planning — Phase 2A revised)  
+**Status:** Accepted (Planning — Phase 2A revised) · **Implemented:** 2026-07-19  
 **Date:** 2026-07-19 · **Revised:** 2026-07-19 (Phase 2A — MP-2)  
 **Capability ID:** V2.1-8  
 **Phase:** V2.1 — Intelligence depth  

@@ -1,6 +1,6 @@
 # ADR-016 — V2.1-7 Projection Intelligence Calibration
 
-**Status:** Accepted (Planning — Phase 2A revised)  
+**Status:** Accepted (Planning — Phase 2A revised) · **Implemented:** 2026-07-19  
 **Date:** 2026-07-19 · **Revised:** 2026-07-19 (Phase 2A — HP-2, MP-3)  
 **Capability ID:** V2.1-7  
 **Phase:** V2.1 — Intelligence depth  

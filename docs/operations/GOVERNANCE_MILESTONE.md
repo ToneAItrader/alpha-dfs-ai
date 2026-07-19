@@ -41,7 +41,10 @@ The dual-track governance is appropriately aligned with **Alpha DFS AI**.
 | 4 — Opus ADR Package Review | Claude Opus 4.1 | ✅ Complete — [V2_ADR_PACKAGE_REVIEW.md](../reviews/V2_ADR_PACKAGE_REVIEW.md) |
 | 5 — Phase 2A ADR revisions | GPT-5.5 | ✅ Complete |
 | 6 — Gate open decision (Phase 3) | GPT-5.5 | ✅ Complete — [V2_IMPLEMENTATION_GATE.md](../architecture/V2_IMPLEMENTATION_GATE.md) **OPEN** |
-| 7 — V2.0 Foundation implementation | Composer 2.5 | **Next** — branch `v2/v2.0-foundation` |
+| 7 — V2.0 Foundation implementation | Composer 2.5 | ✅ Complete — [V2_FOUNDATION_COMPLETION_RECORD.md](../architecture/V2_FOUNDATION_COMPLETION_RECORD.md) |
+| 8 — V2.1 Intelligence implementation | Composer 2.5 | ✅ Complete — [V2_1_PROGRAM_COMPLETION_RECORD.md](../architecture/V2_1_PROGRAM_COMPLETION_RECORD.md) |
+| 9 — V2.1 Release Candidate | Composer 2.5 + GPT-5.5 | ✅ Complete — [V2_1_RELEASE_NOTES.md](./releases/V2_1_RELEASE_NOTES.md) · [PHASE_0_COMPLETION_RECORD.md](./PHASE_0_COMPLETION_RECORD.md) |
+| 10 — V2.2 planning | GPT-5.5 | 🚫 Not authorized |
 
 ---
 

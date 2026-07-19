@@ -1,6 +1,6 @@
 # Alpha DFS AI — Documentation Index
 
-**Updated:** 2026-07-19  
+**Updated:** 2026-07-19 (V2.1 Release Candidate)  
 **Workflow:** [DUAL_TRACK_WORKFLOW.md](../operations/DUAL_TRACK_WORKFLOW.md) — dual-track (V1 maintenance + V2 planning)
 
 ---
@@ -12,7 +12,7 @@ Development splits after RC validation. Linear Task 11.x numbering is retired fo
 | Workstream | Focus | Governance | Implementation |
 |------------|-------|------------|----------------|
 | **A — V1 Maintenance** | Production support, bug fixes, connector reliability | [V1_MAINTENANCE_GOVERNANCE.md](../operations/V1_MAINTENANCE_GOVERNANCE.md) | Approved changes only |
-| **B — V2 Program** | Advanced DFS capabilities, architecture, ADRs | [V2_PLANNING_GOVERNANCE.md](./V2_PLANNING_GOVERNANCE.md) | **V2.1 authorized** — branch `v2/v2.1-intelligence` |
+| **B — V2 Program** | Advanced DFS capabilities, architecture, ADRs | [V2_PLANNING_GOVERNANCE.md](./V2_PLANNING_GOVERNANCE.md) | **V2.1 Release Candidate** — branch `main` |
 
 Models: [MODEL_ASSIGNMENT.md](../operations/MODEL_ASSIGNMENT.md)
 
@@ -42,7 +42,9 @@ Models: [MODEL_ASSIGNMENT.md](../operations/MODEL_ASSIGNMENT.md)
 | [TASK_3_PLANNING_PACKAGE.md](./TASK_3_PLANNING_PACKAGE.md) | **Task 3 — planning package complete** |
 | [V2_IMPLEMENTATION_GATE.md](./V2_IMPLEMENTATION_GATE.md) | **Implementation gate — OPEN (V2.0 complete)** |
 | [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md) | **V2.1 gate — CLOSED (V2-CC-002)** |
-| [V2_1_PLANNING_PACKAGE.md](./V2_1_PLANNING_PACKAGE.md) | V2.1 planning package — complete |
+| [V2_1_PROGRAM_COMPLETION_RECORD.md](./V2_1_PROGRAM_COMPLETION_RECORD.md) | **V2.1 program completion — Release Candidate** |
+| [releases/V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md) | **V2.1 release notes (v2.1.0 RC)** |
+| [PHASE_0_COMPLETION_RECORD.md](../operations/PHASE_0_COMPLETION_RECORD.md) | **Phase 0 bootstrap complete** |
 | [V2_FOUNDATION_COMPLETION_RECORD.md](./V2_FOUNDATION_COMPLETION_RECORD.md) | **V2.0 Foundation completion record** |
 | [reviews/V2_ADR_PACKAGE_REVIEW.md](../reviews/V2_ADR_PACKAGE_REVIEW.md) | V2.0 ADR package review |
 | [reviews/V2_1_ADR_PACKAGE_REVIEW.md](../reviews/V2_1_ADR_PACKAGE_REVIEW.md) | V2.1 ADR review — Approved (Phase 2A complete) |
@@ -59,6 +61,7 @@ Models: [MODEL_ASSIGNMENT.md](../operations/MODEL_ASSIGNMENT.md)
 
 | ADR | Capability |
 |-----|------------|
+| [ADR-000](./ADR-000-REPOSITORY_GOVERNANCE.md) | Repository governance |
 | [ADR-003](./ADR-003-V2_PLANNING_KICKOFF.md) | V2 planning kickoff |
 | [ADR-004](./ADR-004-V2_0_1_TELEMETRY_EXPORT.md) | V2.0-1 Telemetry export |
 | [ADR-005](./ADR-005-V2_0_2_READONLY_SMOKE.md) | V2.0-2 Read-only smoke |
@@ -89,6 +92,7 @@ Models: [MODEL_ASSIGNMENT.md](../operations/MODEL_ASSIGNMENT.md)
 | [RELEASE_CERTIFICATION_SPEC.md](../operations/RELEASE_CERTIFICATION_SPEC.md) | Release acceptance criteria |
 | [RELEASE_CHECKLIST.md](../operations/RELEASE_CHECKLIST.md) | Production cutover checklist |
 | [RELEASE_NOTES_V1.md](../operations/RELEASE_NOTES_V1.md) | V1 release notes |
+| [releases/V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md) | **V2.1 release notes** |
 
 ---
 
@@ -131,8 +135,6 @@ Slate Intelligence → Agents → Evidence → Scoring → PCE → PIE → Simul
 ## Gate
 
 **V1 RC validated** — [RC_VALIDATION_REPORT.md](../operations/RC_VALIDATION_REPORT.md)  
-**Planning complete** — [TASK_3_PLANNING_PACKAGE.md](./TASK_3_PLANNING_PACKAGE.md)  
-**Implementation gate:** ✅ **OPEN** (V2.0 Foundation complete) — [V2_IMPLEMENTATION_GATE.md](./V2_IMPLEMENTATION_GATE.md)  
-**Completion record:** [V2_FOUNDATION_COMPLETION_RECORD.md](./V2_FOUNDATION_COMPLETION_RECORD.md)  
-**V2.1 gate:** ✅ **OPEN** — [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md) (V2-CC-002)  
-**Next:** V2.1-2 implementation on `v2/v2.1-intelligence`
+**V2.0 Foundation complete** — [V2_FOUNDATION_COMPLETION_RECORD.md](./V2_FOUNDATION_COMPLETION_RECORD.md)  
+**V2.1 Release Candidate** — [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md) · [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md) **CLOSED**  
+**Next:** V2.2 planning (not authorized)

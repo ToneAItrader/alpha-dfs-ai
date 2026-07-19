@@ -1,8 +1,8 @@
 # Version 2 Planning Governance — Alpha DFS AI
 
-**Status:** Active — V2.1 implementation authorized  
+**Status:** Active — V2.1 Release Candidate complete  
 **Effective:** 2026-07-19  
-**Workstream:** B — Version 2 Planning → Implementation  
+**Workstream:** B — Version 2 Program  
 **Parent:** [V2_PROGRAM.md](./V2_PROGRAM.md) · [ADR-003-V2_PLANNING_KICKOFF.md](./ADR-003-V2_PLANNING_KICKOFF.md)
 
 ---
@@ -11,7 +11,7 @@
 
 Version 2 is the **innovation track** for advanced DFS capabilities. Workstream B defines architecture, ADRs, capability sequencing, and migration strategy.
 
-**V2.1 implementation is authorized** on branch `v2/v2.1-intelligence` per [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md) (V2-CC-002). V2.2+ remains blocked until respective phase gates open.
+**V2.1 is complete** — Release Candidate on `main` per [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md). **V2.2+ remains blocked** until respective phase gates open.
 
 Implementation requires:
 

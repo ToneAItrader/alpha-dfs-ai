@@ -4,7 +4,8 @@
 **Change Control:** V2-CC-002  
 **Branch:** `v2/v2.1-intelligence`  
 **Date:** 2026-07-19  
-**Status:** ✅ **Complete** — All nine capabilities implemented and verified
+**Status:** ✅ **Complete** — Release Candidate (2026-07-19)  
+**Release:** [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md) · `main` @ `11edc8f` · tag `v2.1.0`
 
 ---
 
@@ -96,4 +97,4 @@ slate_analysis
 
 ## Exactly One Next Recommended Action
 
-**V2.1 branch merge decision** — E2E verified (11 passed). Engineering review for merge of `v2/v2.1-intelligence` per [V2_IMPLEMENTATION_GATE.md](./V2_IMPLEMENTATION_GATE.md). Do not start V2.2+ capability work until merge decision is recorded.
+**V2.2 planning gate** — ABR-001 + V2.2 Phase Charter. Not authorized until explicit approval. V2.1 Release Candidate is closed.
