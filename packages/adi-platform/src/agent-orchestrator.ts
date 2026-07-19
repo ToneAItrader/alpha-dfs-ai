@@ -1,7 +1,9 @@
 import type { AnalysisRunContext } from "@alpha-dfs/shared";
+import { isAdiFusionEnabled } from "./adi-config";
 import type { ConnectorManager } from "./connector-manager";
 import type { EventBus } from "./event-bus";
 import type { EvidenceCache } from "./evidence-cache";
+import { runFusionAgent } from "./fusion-agent";
 import type { SourceRegistry } from "./source-registry";
 
 const DEFAULT_CACHE_TTL_SECONDS = 3600;
@@ -18,10 +20,18 @@ export type AgentOrchestratorDeps = {
   connectorManager: ConnectorManager;
   evidenceCache?: EvidenceCache;
   fetchEnabled?: boolean;
+  fusionEnabled?: boolean;
 };
 
 export function createAgentOrchestrator(deps: AgentOrchestratorDeps): AgentOrchestrator {
-  const { eventBus, registry, connectorManager, evidenceCache, fetchEnabled = false } = deps;
+  const {
+    eventBus,
+    registry,
+    connectorManager,
+    evidenceCache,
+    fetchEnabled = false,
+    fusionEnabled = isAdiFusionEnabled(),
+  } = deps;
 
   return {
     async onPipelineStarted(context, correlationId) {
@@ -84,6 +94,49 @@ export function createAgentOrchestrator(deps: AgentOrchestratorDeps): AgentOrche
             reason: "No evidence packages returned",
             retryable: true,
           });
+        }
+      }
+
+      if (fusionEnabled && packages.length > 0) {
+        await eventBus.publish("adi.fusion.requested", {
+          schemaVersion: "1.0",
+          runId: context.runId,
+          slateId,
+          packageCount: packages.length,
+        });
+
+        try {
+          const { bundle, conflictCount } = runFusionAgent({
+            runId: context.runId,
+            slateId,
+            packages,
+            registry,
+          });
+          evidenceCache?.setBundle(context.runId, bundle, DEFAULT_CACHE_TTL_SECONDS);
+
+          await eventBus.publish("adi.fusion.completed", {
+            schemaVersion: "1.0",
+            runId: context.runId,
+            subjectCount: bundle.subjects.length,
+            conflictCount,
+            platformConfidence: bundle.platformConfidence,
+          });
+        } catch (error) {
+          const message = error instanceof Error ? error.message : "Fusion failed";
+          evidenceCache?.setBundle(
+            context.runId,
+            {
+              bundleId: `bundle-${context.runId}`,
+              runId: context.runId,
+              slateId,
+              fusedAt: new Date().toISOString(),
+              version: "fusion-1.0",
+              subjects: [],
+              platformConfidence: 0,
+              degradationNotes: [`Fusion agent error: ${message}`],
+            },
+            DEFAULT_CACHE_TTL_SECONDS,
+          );
         }
       }
     },

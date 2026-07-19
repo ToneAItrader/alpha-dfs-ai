@@ -11,7 +11,7 @@ const ENGINE_PACKAGES = [
   "packages/evidence/src",
 ];
 
-const FORBIDDEN_IMPORTS = ["adi-providers", "news-provider", "social-provider"];
+const FORBIDDEN_IMPORTS = ["adi-providers", "news-provider", "social-provider", "evidence-fusion"];
 
 function collectTsFiles(dir: string): string[] {
   const entries = readdirSync(dir, { withFileTypes: true });

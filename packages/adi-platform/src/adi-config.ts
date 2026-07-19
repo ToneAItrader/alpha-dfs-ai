@@ -17,6 +17,7 @@ function readBooleanEnv(name: string, defaultValue: boolean): boolean {
 }
 
 let cachedAdiEnabled: boolean | null = null;
+let cachedFusionEnabled: boolean | null = null;
 
 /** ADI platform master switch — default false (V2.1 behavior preserved). */
 export function isAdiPlatformEnabled(): boolean {
@@ -28,6 +29,17 @@ export function isAdiPlatformEnabled(): boolean {
 
 export function resetAdiConfigCache(): void {
   cachedAdiEnabled = null;
+  cachedFusionEnabled = null;
+}
+
+export function isAdiFusionEnabled(): boolean {
+  if (!isAdiPlatformEnabled()) {
+    return false;
+  }
+  if (cachedFusionEnabled === null) {
+    cachedFusionEnabled = readBooleanEnv("ADI_FUSION_ENABLED", true);
+  }
+  return cachedFusionEnabled;
 }
 
 export function isProviderEnabled(providerId: string): boolean {

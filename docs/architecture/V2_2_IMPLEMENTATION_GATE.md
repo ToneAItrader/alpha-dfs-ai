@@ -1,6 +1,6 @@
 # Version 2.2 Implementation Gate
 
-**Status:** 🟢 **OPEN — Implementation Authorized (M6)**  
+**Status:** 🟢 **OPEN — Implementation Authorized (M7)**  
 **Date opened (planning):** 2026-07-19  
 **Date opened (implementation):** 2026-07-19  
 **Parent:** [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) · [V2_PLANNING_GOVERNANCE.md](./V2_PLANNING_GOVERNANCE.md)  
@@ -14,10 +14,10 @@
 | Field | Value |
 |-------|-------|
 | Program | Version 2.2 — Alternative Data Intelligence Platform |
-| Phase | **Implementation — M6 authorized** |
+| Phase | **Implementation — M7 authorized** |
 | Authorization | ✅ [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) |
 | Architecture | ✅ Programs 2–7 complete |
-| Implementation | ✅ **M5 certified** — M6 authorized; M7–M8 gated per milestone |
+| Implementation | ✅ **M6 certified** — M7 authorized; M8 gated |
 | Baseline | `main` @ `v2.1.0` (`dd52641`) |
 | Implementation branch | `v2/v2.2-adi` |
 | Amendment 001 | Unchanged — DraftKings · NFL · Classic Salary Cap |
@@ -33,7 +33,7 @@
 | Authorization date | 2026-07-19 |
 | Implementation authorization date | 2026-07-19 |
 | Authorized workstream | B — Version 2 Program → Implementation (M4) |
-| Authorized work (current) | M6 Evidence Fusion Engine |
+| Authorized work (current) | M7 Engine Integration |
 | Constraints | No V2.1 breaking changes; no ADI UI; ADR-009 for schema |
 | Rollback | Abandon `v2/v2.2-adi`; `main` @ `v2.1.0` unchanged |
 
@@ -61,8 +61,8 @@
 |-----------|--------|---------------|
 | M4 Platform Infrastructure | ✅ **Certified** | [V2_2_M4_CERTIFICATION_REVIEW.md](./V2_2_M4_CERTIFICATION_REVIEW.md) |
 | M5 Evidence Providers | ✅ **Certified** | [V2_2_M5_CERTIFICATION_REVIEW.md](./V2_2_M5_CERTIFICATION_REVIEW.md) |
-| M6 Evidence Fusion | 🟢 **Authorized** | M5 certified 2026-07-19 |
-| M7 Engine Integration | 🔒 Blocked until M6 certified | — |
+| M6 Evidence Fusion | ✅ **Certified** | [V2_2_M6_CERTIFICATION_REVIEW.md](./V2_2_M6_CERTIFICATION_REVIEW.md) |
+| M7 Engine Integration | 🟢 **Authorized** | M6 certified 2026-07-19 |
 | M8 Validation & Certification | 🔒 Blocked until M7 certified | — |
 
 ---
@@ -96,4 +96,4 @@
 
 ## Exactly one next action
 
-**Program 8 — M6:** Implement Evidence Fusion Engine on `v2/v2.2-adi` per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md). M5 certified: [V2_2_M5_CERTIFICATION_REVIEW.md](./V2_2_M5_CERTIFICATION_REVIEW.md).
+**Program 8 — M7:** Integrate fused evidence into V2.1 engines on `v2/v2.2-adi` per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md). M6 certified: [V2_2_M6_CERTIFICATION_REVIEW.md](./V2_2_M6_CERTIFICATION_REVIEW.md).

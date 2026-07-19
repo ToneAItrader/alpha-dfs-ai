@@ -1,5 +1,5 @@
 {
-  "name": "@alpha-dfs/adi-platform",
+  "name": "@alpha-dfs/evidence-fusion",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,12 +10,9 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@alpha-dfs/evidence-fusion": "*",
-    "@alpha-dfs/observability": "*",
     "@alpha-dfs/shared": "*"
   },
   "devDependencies": {
-    "@alpha-dfs/adi-providers": "*",
     "typescript": "^5",
     "vitest": "^4.1.10"
   }

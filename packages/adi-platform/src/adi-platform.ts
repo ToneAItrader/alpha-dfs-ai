@@ -20,6 +20,7 @@ export type AdiPlatform = {
 export type AdiPlatformDeps = {
   enabled?: boolean;
   providers?: EvidenceProvider[];
+  fusionEnabled?: boolean;
 };
 
 let defaultProviders: EvidenceProvider[] = [];
@@ -48,6 +49,7 @@ export function createAdiPlatform(deps: AdiPlatformDeps = {}): AdiPlatform {
     connectorManager,
     evidenceCache: cache,
     fetchEnabled,
+    fusionEnabled: deps.fusionEnabled,
   });
 
   let prepared = false;
@@ -68,16 +70,16 @@ export function createAdiPlatform(deps: AdiPlatformDeps = {}): AdiPlatform {
         providerCount: providers.length,
       });
 
+      cache.clear(context.runId);
       await orchestrator.onPipelineStarted(context, correlationId);
       recordPlatformReady();
-      cache.clear(context.runId);
     },
 
     getNormalizedEvidence() {
-      if (!enabled || !prepared) {
+      if (!enabled || !prepared || !activeRunId) {
         return undefined;
       }
-      return undefined;
+      return cache.getBundle(activeRunId);
     },
 
     getCachedPackages() {

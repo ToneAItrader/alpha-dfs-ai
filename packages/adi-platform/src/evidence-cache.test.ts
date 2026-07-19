@@ -34,4 +34,20 @@ describe("evidence cache", () => {
     cache.clear("run-1");
     expect(cache.get("run-1")).toBeUndefined();
   });
+
+  it("stores and retrieves fusion bundle for a run", () => {
+    const cache = createEvidenceCache();
+    const bundle = {
+      bundleId: "bundle-run-1",
+      runId: "run-1",
+      slateId: "slate-1",
+      fusedAt: new Date().toISOString(),
+      version: "fusion-1.0" as const,
+      subjects: [],
+      platformConfidence: 0.5,
+      degradationNotes: [],
+    };
+    cache.setBundle("run-1", bundle, 60);
+    expect(cache.getBundle("run-1")).toEqual(bundle);
+  });
 });
