@@ -1,0 +1,53 @@
+{
+  "name": "@alpha-dfs/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "certify:e2e": "playwright test",
+    "certify:e2e:ui": "playwright test --ui",
+    "e2e:install": "playwright install chromium"
+  },
+  "dependencies": {
+    "@alpha-dfs/connectors": "*",
+    "@alpha-dfs/database": "*",
+    "@alpha-dfs/evidence": "*",
+    "@alpha-dfs/observability": "*",
+    "@alpha-dfs/ownership-prediction": "*",
+    "@alpha-dfs/telemetry-export": "*",
+    "@alpha-dfs/portfolio-intelligence": "*",
+    "@alpha-dfs/portfolio-simulation": "*",
+    "@alpha-dfs/prediction-confidence": "*",
+    "@alpha-dfs/projection-calibration": "*",
+    "@alpha-dfs/shared": "*",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.25.0",
+    "next": "^15.5.20",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.0.3",
+    "eslint": "^9",
+    "eslint-config-next": "^15.5.20",
+    "jsdom": "^29.1.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5",
+    "vitest": "^4.1.10",
+    "@playwright/test": "^1.51.1"
+  }
+}

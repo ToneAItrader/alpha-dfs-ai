@@ -1,0 +1,28 @@
+{
+  "injuries": [
+    {
+      "playerId": "p3",
+      "injuryStatus": "questionable",
+      "practiceStatus": "limited",
+      "gameStatus": "probable"
+    },
+    {
+      "playerId": "p7",
+      "injuryStatus": "doubtful",
+      "practiceStatus": "dnp",
+      "gameStatus": "questionable"
+    },
+    {
+      "playerId": "p8",
+      "injuryStatus": "out",
+      "practiceStatus": "dnp",
+      "gameStatus": "out"
+    },
+    {
+      "playerId": "p11",
+      "injuryStatus": "questionable",
+      "practiceStatus": "full",
+      "gameStatus": "probable"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@alpha-dfs/connectors",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@alpha-dfs/observability": "*",
+    "@alpha-dfs/shared": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "vitest": "^4.1.10"
+  }
+}

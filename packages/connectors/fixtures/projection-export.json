@@ -1,0 +1,19 @@
+{
+  "projections": [
+    { "playerId": "p1", "projectedPoints": 18.5, "floor": 14.2, "ceiling": 24.8, "ownershipProjected": 12 },
+    { "playerId": "p2", "projectedPoints": 19.5, "floor": 12.0, "ceiling": 28.0, "ownershipProjected": 15 },
+    { "playerId": "p3", "projectedPoints": 20.5, "floor": 11.5, "ceiling": 30.2, "ownershipProjected": 18 },
+    { "playerId": "p4", "projectedPoints": 21.5, "floor": 10.0, "ceiling": 32.0, "ownershipProjected": 10 },
+    { "playerId": "p5", "projectedPoints": 22.5, "floor": 9.5, "ceiling": 34.0, "ownershipProjected": 14 },
+    { "playerId": "p6", "projectedPoints": 17.8, "floor": 13.5, "ceiling": 23.0, "ownershipProjected": 8 },
+    { "playerId": "p7", "projectedPoints": 16.2, "floor": 10.5, "ceiling": 24.0, "ownershipProjected": 11 },
+    { "playerId": "p8", "projectedPoints": 14.8, "floor": 9.0, "ceiling": 22.5, "ownershipProjected": 9 },
+    { "playerId": "p9", "projectedPoints": 13.5, "floor": 8.0, "ceiling": 21.0, "ownershipProjected": 7 },
+    { "playerId": "p10", "projectedPoints": 12.8, "floor": 7.5, "ceiling": 20.0, "ownershipProjected": 6 },
+    { "playerId": "p11", "projectedPoints": 11.2, "floor": 6.5, "ceiling": 17.5, "ownershipProjected": 5 },
+    { "playerId": "p12", "projectedPoints": 12.0, "floor": 7.0, "ceiling": 19.5, "ownershipProjected": 4 },
+    { "playerId": "p13", "projectedPoints": 12.5, "floor": 7.2, "ceiling": 20.5, "ownershipProjected": 5 },
+    { "playerId": "p14", "projectedPoints": 8.5, "floor": 4.0, "ceiling": 14.0, "ownershipProjected": 8 },
+    { "playerId": "p15", "projectedPoints": 7.8, "floor": 3.5, "ceiling": 13.0, "ownershipProjected": 6 }
+  ]
+}

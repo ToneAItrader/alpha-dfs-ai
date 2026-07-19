@@ -1,0 +1,44 @@
+{
+  "slateName": "DraftKings NFL Classic — Week 1",
+  "week": 1,
+  "season": 2026,
+  "sport": "nfl",
+  "platform": "draftkings",
+  "slateType": "classic",
+  "teams": [
+    { "abbreviation": "BUF", "name": "Buffalo Bills" },
+    { "abbreviation": "KC", "name": "Kansas City Chiefs" },
+    { "abbreviation": "DAL", "name": "Dallas Cowboys" },
+    { "abbreviation": "PHI", "name": "Philadelphia Eagles" },
+    { "abbreviation": "MIA", "name": "Miami Dolphins" },
+    { "abbreviation": "NYJ", "name": "New York Jets" },
+    { "abbreviation": "SF", "name": "San Francisco 49ers" },
+    { "abbreviation": "SEA", "name": "Seattle Seahawks" },
+    { "abbreviation": "CIN", "name": "Cincinnati Bengals" },
+    { "abbreviation": "BAL", "name": "Baltimore Ravens" }
+  ],
+  "games": [
+    { "home": "BUF", "away": "KC" },
+    { "home": "DAL", "away": "PHI" },
+    { "home": "MIA", "away": "NYJ" },
+    { "home": "SF", "away": "SEA" },
+    { "home": "CIN", "away": "BAL" }
+  ],
+  "players": [
+    { "playerId": "p1", "displayName": "Player One", "position": "QB", "teamAbbreviation": "BUF", "opponentAbbreviation": "KC", "salary": 7200, "injuryStatus": "healthy" },
+    { "playerId": "p2", "displayName": "Player Two", "position": "RB", "teamAbbreviation": "DAL", "opponentAbbreviation": "PHI", "salary": 7600, "injuryStatus": "healthy" },
+    { "playerId": "p3", "displayName": "Player Three", "position": "WR", "teamAbbreviation": "MIA", "opponentAbbreviation": "NYJ", "salary": 8000, "injuryStatus": "questionable" },
+    { "playerId": "p4", "displayName": "Player Four", "position": "TE", "teamAbbreviation": "SF", "opponentAbbreviation": "SEA", "salary": 8400, "injuryStatus": "healthy" },
+    { "playerId": "p5", "displayName": "Player Five", "position": "WR", "teamAbbreviation": "CIN", "opponentAbbreviation": "BAL", "salary": 8800, "injuryStatus": "healthy" },
+    { "playerId": "p6", "displayName": "Player Six", "position": "QB", "teamAbbreviation": "KC", "opponentAbbreviation": "BUF", "salary": 7000, "injuryStatus": "healthy" },
+    { "playerId": "p7", "displayName": "Player Seven", "position": "RB", "teamAbbreviation": "PHI", "opponentAbbreviation": "DAL", "salary": 6800, "injuryStatus": "healthy" },
+    { "playerId": "p8", "displayName": "Player Eight", "position": "RB", "teamAbbreviation": "MIA", "opponentAbbreviation": "NYJ", "salary": 6200, "injuryStatus": "healthy" },
+    { "playerId": "p9", "displayName": "Player Nine", "position": "WR", "teamAbbreviation": "SF", "opponentAbbreviation": "SEA", "salary": 5900, "injuryStatus": "healthy" },
+    { "playerId": "p10", "displayName": "Player Ten", "position": "WR", "teamAbbreviation": "DAL", "opponentAbbreviation": "PHI", "salary": 5600, "injuryStatus": "healthy" },
+    { "playerId": "p11", "displayName": "Player Eleven", "position": "TE", "teamAbbreviation": "BUF", "opponentAbbreviation": "KC", "salary": 4800, "injuryStatus": "healthy" },
+    { "playerId": "p12", "displayName": "Player Twelve", "position": "WR", "teamAbbreviation": "CIN", "opponentAbbreviation": "BAL", "salary": 5200, "injuryStatus": "healthy" },
+    { "playerId": "p13", "displayName": "Player Thirteen", "position": "RB", "teamAbbreviation": "SF", "opponentAbbreviation": "SEA", "salary": 5400, "injuryStatus": "healthy" },
+    { "playerId": "p14", "displayName": "Bills DST", "position": "DST", "teamAbbreviation": "BUF", "opponentAbbreviation": "KC", "salary": 3200, "injuryStatus": "healthy" },
+    { "playerId": "p15", "displayName": "Chiefs DST", "position": "DST", "teamAbbreviation": "KC", "opponentAbbreviation": "BUF", "salary": 3000, "injuryStatus": "healthy" }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "extends": "../../apps/web/tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "paths": {
+      "@/*": ["../../apps/web/src/*"]
+    }
+  },
+  "include": [
+    "./**/*.ts",
+    "../../apps/web/src/lib/backend/operations/**/*.ts"
+  ]
+}

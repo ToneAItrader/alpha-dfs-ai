@@ -1,0 +1,35 @@
+{
+  "name": "alpha-dfs-ai",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=@alpha-dfs/web",
+    "build": "npm run build --workspace=@alpha-dfs/web",
+    "test": "npm run test --workspace=@alpha-dfs/web",
+    "lint": "npm run lint --workspace=@alpha-dfs/web",
+    "db:generate": "npm run db:generate --workspace=@alpha-dfs/database",
+    "db:push": "npm run db:push --workspace=@alpha-dfs/database",
+    "db:seed": "npm run db:seed --workspace=@alpha-dfs/database",
+    "db:setup": "npm run db:generate && npm run db:push && npm run db:seed",
+    "certify:deploy": "npx tsx scripts/release/validate-deployment.ts",
+    "certify:startup": "npx tsx --tsconfig scripts/release/tsconfig.json scripts/release/validate-startup.ts",
+    "certify": "npx tsx scripts/release/run-certification.ts",
+    "deploy": "bash scripts/release/deploy.sh",
+    "deploy:backup": "npx tsx scripts/release/backup-database.ts",
+    "deploy:backup:prune": "npx tsx --tsconfig scripts/release/tsconfig.json scripts/release/prune-backups.ts",
+    "deploy:rollback": "npx tsx scripts/release/rollback-database.ts",
+    "deploy:smoke": "npx tsx --tsconfig scripts/release/tsconfig.json scripts/release/smoke-test.ts",
+    "deploy:verify": "npx tsx --tsconfig scripts/release/tsconfig.json scripts/release/verify-production-readiness.ts",
+    "certify:e2e": "npm run e2e:install --workspace=@alpha-dfs/web && npm run certify:e2e --workspace=@alpha-dfs/web",
+    "certify:e2e:ui": "npm run certify:e2e:ui --workspace=@alpha-dfs/web"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

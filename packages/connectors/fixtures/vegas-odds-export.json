@@ -1,0 +1,49 @@
+{
+  "games": [
+    {
+      "home": "BUF",
+      "away": "KC",
+      "spread": -2.5,
+      "total": 48.5,
+      "impliedHomeTotal": 25.5,
+      "impliedAwayTotal": 23.0,
+      "lineMovement": 1.0
+    },
+    {
+      "home": "DAL",
+      "away": "PHI",
+      "spread": 3.0,
+      "total": 51.0,
+      "impliedHomeTotal": 24.0,
+      "impliedAwayTotal": 27.0,
+      "lineMovement": -0.5
+    },
+    {
+      "home": "MIA",
+      "away": "NYJ",
+      "spread": -6.5,
+      "total": 42.0,
+      "impliedHomeTotal": 24.25,
+      "impliedAwayTotal": 17.75,
+      "lineMovement": 0.0
+    },
+    {
+      "home": "SF",
+      "away": "SEA",
+      "spread": -4.0,
+      "total": 46.5,
+      "impliedHomeTotal": 25.25,
+      "impliedAwayTotal": 21.25,
+      "lineMovement": 0.5
+    },
+    {
+      "home": "CIN",
+      "away": "BAL",
+      "spread": 2.5,
+      "total": 49.0,
+      "impliedHomeTotal": 23.25,
+      "impliedAwayTotal": 25.75,
+      "lineMovement": -1.0
+    }
+  ]
+}

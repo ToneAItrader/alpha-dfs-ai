@@ -1,0 +1,144 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Slate {
+  id           String        @id @default(cuid())
+  sport        String        @default("nfl")
+  platform     String        @default("draftkings")
+  slateType    String        @default("classic")
+  name         String
+  week         Int
+  season       Int           @default(2026)
+  salaryCap    Int           @default(50000)
+  lockTime     DateTime?
+  status       String        @default("open")
+  slatePlayers SlatePlayer[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Team {
+  id           String        @id @default(cuid())
+  abbreviation String        @unique
+  name         String
+  homeGames    Game[]        @relation("HomeTeam")
+  awayGames    Game[]        @relation("AwayTeam")
+  slatePlayers SlatePlayer[]
+}
+
+model Player {
+  id           String        @id @default(cuid())
+  externalId   String        @unique
+  firstName    String
+  lastName     String
+  position     String
+  slatePlayers SlatePlayer[]
+}
+
+model Game {
+  id           String        @id @default(cuid())
+  season       Int
+  week         Int
+  homeTeamId   String
+  awayTeamId   String
+  homeTeam     Team          @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeam     Team          @relation("AwayTeam", fields: [awayTeamId], references: [id])
+  slatePlayers SlatePlayer[]
+}
+
+model SlatePlayer {
+  id              String                @id @default(cuid())
+  slateId         String
+  playerId        String
+  gameId          String?
+  salary          Int
+  rosterPosition  String
+  opponentAbbr    String
+  isActive        Boolean               @default(true)
+  slate           Slate                 @relation(fields: [slateId], references: [id], onDelete: Cascade)
+  player          Player                @relation(fields: [playerId], references: [id])
+  game            Game?                 @relation(fields: [gameId], references: [id])
+  team            Team                  @relation(fields: [teamId], references: [id])
+  teamId          String
+  projection      Projection?
+  injuryReport    InjuryReport?
+  evidenceDomains EvidenceDomainStatus?
+  @@unique([slateId, playerId])
+}
+
+model Projection {
+  id                 String      @id @default(cuid())
+  slatePlayerId      String      @unique
+  projectedPoints    Float
+  floor              Float
+  ceiling            Float
+  ownershipProjected Float?
+  modelVersion       String      @default("1.0.0")
+  slatePlayer        SlatePlayer @relation(fields: [slatePlayerId], references: [id], onDelete: Cascade)
+}
+
+model InjuryReport {
+  id            String      @id @default(cuid())
+  slatePlayerId String      @unique
+  status        String
+  capturedAt    DateTime    @default(now())
+  slatePlayer   SlatePlayer @relation(fields: [slatePlayerId], references: [id], onDelete: Cascade)
+}
+
+model EvidenceDomainStatus {
+  id            String      @id @default(cuid())
+  slatePlayerId String      @unique
+  statistical   Boolean     @default(false)
+  injury        Boolean     @default(false)
+  expert        Boolean     @default(false)
+  market        Boolean     @default(false)
+  weather       Boolean     @default(false)
+  community     Boolean     @default(false)
+  slatePlayer   SlatePlayer @relation(fields: [slatePlayerId], references: [id], onDelete: Cascade)
+}
+
+model DataRefreshRun {
+  id            String    @id @default(cuid())
+  runId         String?
+  slateId       String?
+  status        String    @default("pending")
+  degraded      Boolean   @default(false)
+  sourceResults String    @default("[]")
+  errors        String?
+  startedAt     DateTime  @default(now())
+  completedAt   DateTime?
+}
+
+model DataSourceStatus {
+  id            String    @id @default(cuid())
+  sourceId      String    @unique
+  priority      String
+  status        String    @default("unknown")
+  lastSuccessAt DateTime?
+  lastAttemptAt DateTime?
+  lastError     String?
+  recordCount   Int       @default(0)
+  updatedAt     DateTime  @updatedAt
+}
+
+model SimulationRun {
+  id                String    @id @default(cuid())
+  runId             String?
+  slateId           String?
+  simulationCount   Int       @default(10000)
+  fieldSize         Int?
+  fieldPercentile   Float?
+  topOnePercentRate Float?
+  cashRate          Float?
+  cashThreshold     Float?
+  seed              Int?
+  status            String    @default("complete")
+  startedAt         DateTime  @default(now())
+  completedAt       DateTime?
+}

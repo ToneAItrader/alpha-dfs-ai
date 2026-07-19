@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0b0f14;
+  --foreground: #e8edf4;
+  --surface: #111820;
+  --surface-elevated: #171f2a;
+  --surface-hover: #1c2532;
+  --surface-border: #243041;
+  --muted: #8b9cb0;
+  --accent: #3dd68c;
+  --accent-muted: #2a9d63;
+  --success: #3dd68c;
+  --warning: #f5b942;
+  --danger: #f07178;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-background {
+    background-color: var(--background);
+  }
+
+  .bg-surface {
+    background-color: var(--surface);
+  }
+
+  .bg-surface-elevated {
+    background-color: var(--surface-elevated);
+  }
+
+  .bg-surface-hover {
+    background-color: var(--surface-hover);
+  }
+
+  .border-surface-border {
+    border-color: var(--surface-border);
+  }
+
+  .text-foreground {
+    color: var(--foreground);
+  }
+
+  .text-muted {
+    color: var(--muted);
+  }
+
+  .text-accent {
+    color: var(--accent);
+  }
+
+  .text-success {
+    color: var(--success);
+  }
+
+  .text-warning {
+    color: var(--warning);
+  }
+
+  .text-danger {
+    color: var(--danger);
+  }
+
+  .bg-accent\/10 {
+    background-color: rgb(61 214 140 / 0.1);
+  }
+
+  .border-accent\/30 {
+    border-color: rgb(61 214 140 / 0.3);
+  }
+
+  .border-t-accent {
+    border-top-color: var(--accent);
+  }
+
+  .bg-danger\/5 {
+    background-color: rgb(240 113 120 / 0.05);
+  }
+
+  .bg-danger\/10 {
+    background-color: rgb(240 113 120 / 0.1);
+  }
+
+  .border-danger\/30 {
+    border-color: rgb(240 113 120 / 0.3);
+  }
+
+  .text-danger {
+    color: var(--danger);
+  }
+
+  .bg-warning\/10 {
+    background-color: rgb(245 185 66 / 0.1);
+  }
+
+  .ring-warning\/30 {
+    --tw-ring-color: rgb(245 185 66 / 0.3);
+  }
+
+  .text-warning {
+    color: var(--warning);
+  }
+
+  .bg-success\/10 {
+    background-color: rgb(61 214 140 / 0.1);
+  }
+
+  .ring-success\/30 {
+    --tw-ring-color: rgb(61 214 140 / 0.3);
+  }
+
+  .ring-muted\/30 {
+    --tw-ring-color: rgb(139 156 176 / 0.3);
+  }
+
+  .bg-muted\/20 {
+    background-color: rgb(139 156 176 / 0.2);
+  }
+
+  .focus-visible\:outline-accent:focus-visible {
+    outline-color: var(--accent);
+  }
+}
