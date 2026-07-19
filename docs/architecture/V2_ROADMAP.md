@@ -29,7 +29,7 @@ Version 2 expands Alpha DFS AI from a validated single-sport, single-platform ma
 |-------|-------|------|----------------|
 | **V2.0 — Foundation** | Ops maturity, QA, deferred V1 gaps | ADR-004–008 | ✅ **Complete** — [V2_FOUNDATION_COMPLETION_RECORD.md](./V2_FOUNDATION_COMPLETION_RECORD.md) |
 | **V2.1 — Intelligence** | Slate UI, simulation, providers, ownership | ADR-010–018 | ✅ **Complete (RC)** — [V2_1_PROGRAM_COMPLETION_RECORD.md](./V2_1_PROGRAM_COMPLETION_RECORD.md) |
-| **V2.2 — ADI Platform** | Alternative Data Intelligence (internal) | TBD (ADR-019+) | 🚫 Not authorized |
+| **V2.2 — ADI Platform** | Alternative Data Intelligence (internal) | ADR-019+ (TBD) | 🟡 **Planning authorized** — [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) |
 | **V2.3 — Sport** | NBA/MLB/NHL plugins (Amendment 003) | TBD | Not started |
 | **V2.4 — Advanced** | Contest, bankroll, late swap, AI (Amendment 004) | TBD | Not started |
 

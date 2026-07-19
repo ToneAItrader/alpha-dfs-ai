@@ -44,7 +44,8 @@ Models: [MODEL_ASSIGNMENT.md](../operations/MODEL_ASSIGNMENT.md)
 | [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md) | **V2.1 gate — CLOSED (V2-CC-002)** |
 | [V2_1_PROGRAM_COMPLETION_RECORD.md](./V2_1_PROGRAM_COMPLETION_RECORD.md) | **V2.1 program completion — Release Candidate** |
 | [releases/V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md) | **V2.1 release notes (v2.1.0 RC)** |
-| [PHASE_0_COMPLETION_RECORD.md](../operations/PHASE_0_COMPLETION_RECORD.md) | **Phase 0 bootstrap complete** |
+| [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) | **V2.2 program authorization (V2-CC-003)** |
+| [V2_2_IMPLEMENTATION_GATE.md](./V2_2_IMPLEMENTATION_GATE.md) | **V2.2 gate — OPEN (planning only)** |
 | [V2_FOUNDATION_COMPLETION_RECORD.md](./V2_FOUNDATION_COMPLETION_RECORD.md) | **V2.0 Foundation completion record** |
 | [reviews/V2_ADR_PACKAGE_REVIEW.md](../reviews/V2_ADR_PACKAGE_REVIEW.md) | V2.0 ADR package review |
 | [reviews/V2_1_ADR_PACKAGE_REVIEW.md](../reviews/V2_1_ADR_PACKAGE_REVIEW.md) | V2.1 ADR review — Approved (Phase 2A complete) |

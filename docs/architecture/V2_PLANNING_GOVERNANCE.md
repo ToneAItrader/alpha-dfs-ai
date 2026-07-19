@@ -11,7 +11,7 @@
 
 Version 2 is the **innovation track** for advanced DFS capabilities. Workstream B defines architecture, ADRs, capability sequencing, and migration strategy.
 
-**V2.1 is complete** — Release Candidate on `main` per [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md). **V2.2+ remains blocked** until respective phase gates open.
+**V2.1 is complete** — Release Candidate on `main` per [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md). **V2.2 planning is authorized** per [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md); implementation remains gated per [V2_2_IMPLEMENTATION_GATE.md](./V2_2_IMPLEMENTATION_GATE.md).
 
 Implementation requires:
 
