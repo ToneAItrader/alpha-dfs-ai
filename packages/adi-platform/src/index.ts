@@ -1,4 +1,4 @@
-export { isAdiPlatformEnabled, isAdiFusionEnabled, isProviderEnabled, resetAdiConfigCache, getKnownProviderIds, providerEnvFlagName } from "./adi-config";
+export { isAdiPlatformEnabled, isAdiFusionEnabled, isAdiLearningEnabled, isProviderEnabled, resetAdiConfigCache, getKnownProviderIds, providerEnvFlagName } from "./adi-config";
 export {
   createAdiPlatform,
   getAdiPlatform,
@@ -15,6 +15,7 @@ export {
 } from "./connector-manager";
 export { createEventBus, type EventBus } from "./event-bus";
 export { createEvidenceCache, type EvidenceCache } from "./evidence-cache";
+export { scheduleLearningUpdate, type LearningAgentInput } from "./learning-agent";
 export { runFusionAgent, type FusionAgentInput, type FusionAgentResult } from "./fusion-agent";
 export {
   recordEvidenceFreshness,

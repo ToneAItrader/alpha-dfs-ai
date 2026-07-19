@@ -4,13 +4,19 @@ import { createAgentOrchestrator } from "./agent-orchestrator";
 import { isAdiPlatformEnabled } from "./adi-config";
 import { createConnectorManager } from "./connector-manager";
 import type { EvidenceProvider } from "./provider-contract";
+import type { EvidenceFetchContext } from "./provider-contract";
 import { createEventBus } from "./event-bus";
 import { createEvidenceCache } from "./evidence-cache";
 import { recordPlatformReady } from "./metrics";
 import { createSourceRegistry } from "./source-registry";
+import { scheduleLearningUpdate } from "./learning-agent";
 
 export type AdiPlatform = {
-  prepare(context: AnalysisRunContext, correlationId?: string): Promise<void>;
+  prepare(
+    context: AnalysisRunContext,
+    correlationId?: string,
+    options?: { fetchContext?: EvidenceFetchContext },
+  ): Promise<void>;
   complete(runId: string, success: boolean, durationMs: number): Promise<void>;
   getNormalizedEvidence(): AdiNormalizedEvidenceBundle | undefined;
   getCachedPackages(): import("@alpha-dfs/shared").AdiEvidencePackage[];
@@ -21,6 +27,7 @@ export type AdiPlatformDeps = {
   enabled?: boolean;
   providers?: EvidenceProvider[];
   fusionEnabled?: boolean;
+  fetchContext?: EvidenceFetchContext;
 };
 
 let defaultProviders: EvidenceProvider[] = [];
@@ -50,19 +57,22 @@ export function createAdiPlatform(deps: AdiPlatformDeps = {}): AdiPlatform {
     evidenceCache: cache,
     fetchEnabled,
     fusionEnabled: deps.fusionEnabled,
+    fetchContext: deps.fetchContext,
   });
 
   let prepared = false;
   let activeRunId: string | undefined;
+  let activeFetchContext: EvidenceFetchContext | undefined = deps.fetchContext;
 
   return {
-    async prepare(context, correlationId = context.runId) {
+    async prepare(context, correlationId = context.runId, options) {
       if (!enabled) {
         return;
       }
 
       prepared = true;
       activeRunId = context.runId;
+      activeFetchContext = options?.fetchContext ?? deps.fetchContext;
 
       structuredLog("info", "adi", "adi.prepare", "ADI platform preparing", {
         runId: context.runId,
@@ -71,7 +81,7 @@ export function createAdiPlatform(deps: AdiPlatformDeps = {}): AdiPlatform {
       });
 
       cache.clear(context.runId);
-      await orchestrator.onPipelineStarted(context, correlationId);
+      await orchestrator.onPipelineStarted(context, correlationId, activeFetchContext);
       recordPlatformReady();
     },
 
@@ -94,6 +104,11 @@ export function createAdiPlatform(deps: AdiPlatformDeps = {}): AdiPlatform {
         return;
       }
       await orchestrator.onPipelineCompleted(runId, success, durationMs);
+      scheduleLearningUpdate({
+        runId,
+        success,
+        bundle: cache.getBundle(runId),
+      });
     },
 
     async shutdown() {

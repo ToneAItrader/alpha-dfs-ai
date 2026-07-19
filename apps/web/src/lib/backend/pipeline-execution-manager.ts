@@ -20,6 +20,8 @@ import {
 } from "@alpha-dfs/observability";
 import { getAdiPlatform, isAdiPlatformEnabled, resetAdiPlatform } from "@alpha-dfs/adi-platform";
 import { ensureAdiProvidersRegistered, resetAdiBootstrap } from "@/lib/backend/adi-bootstrap";
+import { buildAdiFetchContext } from "@/lib/backend/adi-fetch-context";
+import { getSlateDataService } from "@/lib/backend/data/slate-data-service";
 import { assembleAnalysisBundle } from "@/lib/backend/dto-assembler";
 import { setCachedAnalysisBundle } from "@/lib/backend/analysis-cache";
 import type { AnalysisBundleResponseDto } from "@/types/dto/analysis-responses.dto";
@@ -186,7 +188,16 @@ export function createPipelineExecutionManager(): PipelineExecutionManager {
 
           try {
             if (adiPlatform) {
-              await adiPlatform.prepare(context, correlation?.correlationId ?? runId);
+              let fetchContext;
+              if (options?.slateId) {
+                const slatePlayers = await getSlateDataService().slateRepository.getSlatePlayers(
+                  options.slateId,
+                );
+                fetchContext = buildAdiFetchContext(runId, options.slateId, slatePlayers);
+              }
+              await adiPlatform.prepare(context, correlation?.correlationId ?? runId, {
+                fetchContext,
+              });
               const adiEvidence = adiPlatform.getNormalizedEvidence();
               if (adiEvidence) {
                 outputs.adiEvidence = adiEvidence;

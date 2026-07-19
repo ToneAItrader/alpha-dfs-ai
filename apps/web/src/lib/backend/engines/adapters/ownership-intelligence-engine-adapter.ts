@@ -8,6 +8,7 @@ import {
   type OwnershipIntelligenceEngine,
   type OwnershipIntelligenceOutput,
 } from "@alpha-dfs/shared";
+import { buildOwnershipAdiHints } from "@alpha-dfs/evidence-fusion";
 import { getSlateDataService } from "@/lib/backend/data/slate-data-service";
 import { getSlateMarketCache } from "@/lib/backend/slate-market-cache";
 
@@ -45,6 +46,11 @@ export function createOwnershipIntelligenceAgent(): IntelligenceAgent<
             total: game.total,
           }));
           const slateIntelligence = input.priorOutputs?.slateIntelligence;
+          const playerIds = players.map((player) => player.slatePlayerId);
+          const { hints, meta: adiMeta } = buildOwnershipAdiHints(
+            input.priorOutputs?.adiEvidence,
+            playerIds,
+          );
 
           const result = predictOwnershipBaseline({
             players: players.map((player) => ({
@@ -65,6 +71,12 @@ export function createOwnershipIntelligenceAgent(): IntelligenceAgent<
                 }
               : undefined,
             seed: 42,
+            adiHints: hints.map((hint) => ({
+              slatePlayerId: hint.slatePlayerId,
+              chalkProbability: hint.chalkProbability,
+              leverageSignal: hint.leverageSignal,
+              socialSentiment: hint.socialSentiment,
+            })),
           });
 
           const data: OwnershipIntelligenceOutput = {
@@ -75,7 +87,7 @@ export function createOwnershipIntelligenceAgent(): IntelligenceAgent<
             leverageOpportunities: result.leverageOpportunities,
             ownershipConcentration: result.ownershipConcentration,
             assessment: result.assessment,
-            factors: result.factors,
+            factors: [...result.factors, ...adiMeta.adiNotes],
             version: result.version,
           };
 
@@ -86,7 +98,7 @@ export function createOwnershipIntelligenceAgent(): IntelligenceAgent<
           return engineSuccess({
             data,
             confidence: {
-              value: Math.min(1, 0.55 + feedCoverage * 0.35),
+              value: Math.min(1, (0.55 + feedCoverage * 0.35) * adiMeta.confidenceMultiplier),
               grade: feedCoverage >= 0.8 ? "A" : feedCoverage >= 0.5 ? "B" : "C",
               rationale: `Ownership intelligence from ${Math.round(feedCoverage * 100)}% feed coverage`,
             },

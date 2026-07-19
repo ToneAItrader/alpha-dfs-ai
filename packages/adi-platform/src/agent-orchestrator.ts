@@ -1,4 +1,5 @@
 import type { AnalysisRunContext } from "@alpha-dfs/shared";
+import type { EvidenceFetchContext } from "./provider-contract";
 import { isAdiFusionEnabled } from "./adi-config";
 import type { ConnectorManager } from "./connector-manager";
 import type { EventBus } from "./event-bus";
@@ -9,7 +10,11 @@ import type { SourceRegistry } from "./source-registry";
 const DEFAULT_CACHE_TTL_SECONDS = 3600;
 
 export type AgentOrchestrator = {
-  onPipelineStarted(context: AnalysisRunContext, correlationId: string): Promise<void>;
+  onPipelineStarted(
+    context: AnalysisRunContext,
+    correlationId: string,
+    overrideFetchContext?: EvidenceFetchContext,
+  ): Promise<void>;
   onPipelineCompleted(runId: string, success: boolean, durationMs: number): Promise<void>;
   shutdown(): Promise<void>;
 };
@@ -21,6 +26,7 @@ export type AgentOrchestratorDeps = {
   evidenceCache?: EvidenceCache;
   fetchEnabled?: boolean;
   fusionEnabled?: boolean;
+  fetchContext?: EvidenceFetchContext;
 };
 
 export function createAgentOrchestrator(deps: AgentOrchestratorDeps): AgentOrchestrator {
@@ -31,11 +37,13 @@ export function createAgentOrchestrator(deps: AgentOrchestratorDeps): AgentOrche
     evidenceCache,
     fetchEnabled = false,
     fusionEnabled = isAdiFusionEnabled(),
+    fetchContext,
   } = deps;
 
   return {
-    async onPipelineStarted(context, correlationId) {
+    async onPipelineStarted(context, correlationId, overrideFetchContext) {
       const slateId = context.slateId ?? "unknown";
+      const resolvedFetchContext = overrideFetchContext ?? fetchContext;
       await eventBus.publish("pipeline.run.started", {
         schemaVersion: "1.0",
         runId: context.runId,
@@ -66,8 +74,8 @@ export function createAgentOrchestrator(deps: AgentOrchestratorDeps): AgentOrche
       const packages = await connectorManager.fetchAll({
         runId: context.runId,
         slateId,
-        players: [],
-        games: [],
+        players: resolvedFetchContext?.players ?? [],
+        games: resolvedFetchContext?.games ?? [],
         correlationId,
       });
 

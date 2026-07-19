@@ -26,6 +26,11 @@ export type ProjectionCalibrationInput = {
   enabled: boolean;
   players: CalibrationPlayerInput[];
   games?: CalibrationGameContext[];
+  adiAdjustments?: Array<{
+    slatePlayerId: string;
+    factor: number;
+    note?: string;
+  }>;
 };
 
 export type PlayerCalibrationRecord = {

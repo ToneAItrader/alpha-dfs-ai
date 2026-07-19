@@ -11,6 +11,7 @@ import {
   type ProjectionCalibrationEngine,
   type ProjectionCalibrationOutput,
 } from "@alpha-dfs/shared";
+import { buildProjectionAdiAdjustments } from "@alpha-dfs/evidence-fusion";
 import { getSlateDataService } from "@/lib/backend/data/slate-data-service";
 import { getSlateMarketCache } from "@/lib/backend/slate-market-cache";
 
@@ -49,6 +50,12 @@ export function createProjectionCalibrationAgent(): IntelligenceAgent<
             total: game.total,
           }));
 
+          const playerIds = players.map((player) => player.slatePlayerId);
+          const { adjustments, meta: adiMeta } = buildProjectionAdiAdjustments(
+            input.priorOutputs?.adiEvidence,
+            playerIds,
+          );
+
           const result = calibrateProjections({
             enabled,
             players: players.map((player) => ({
@@ -62,6 +69,11 @@ export function createProjectionCalibrationAgent(): IntelligenceAgent<
               injuryStatus: player.injuryStatus,
             })),
             games,
+            adiAdjustments: adjustments.map((entry) => ({
+              slatePlayerId: entry.slatePlayerId,
+              factor: entry.factor,
+              note: entry.note,
+            })),
           });
 
           const data: ProjectionCalibrationOutput = {
@@ -69,13 +81,16 @@ export function createProjectionCalibrationAgent(): IntelligenceAgent<
             playersCalibrated: result.playersCalibrated,
             averageCalibrationFactor: result.averageCalibrationFactor,
             averageCalibratedProjection: result.averageCalibratedProjection,
-            calibrationNotes: result.calibrationNotes,
+            calibrationNotes: [...result.calibrationNotes, ...adiMeta.adiNotes],
             players: result.players,
             version: result.version,
           };
 
           const confidenceValue = enabled
-            ? Math.min(1, result.playersCalibrated / Math.max(players.length, 1))
+            ? Math.min(
+                1,
+                (result.playersCalibrated / Math.max(players.length, 1)) * adiMeta.confidenceMultiplier,
+              )
             : 1;
 
           return engineSuccess({

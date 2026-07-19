@@ -15,6 +15,11 @@ export type SimulationInput = {
   fieldSize?: number;
   cashThreshold?: number;
   seed?: number;
+  adiContext?: {
+    elevatedTotalGames?: number;
+    sharpSignals?: number;
+    notes?: string[];
+  };
 };
 
 export type SimulationResult = {
@@ -51,6 +56,7 @@ export function runPortfolioSimulation(input: SimulationInput): SimulationResult
     fieldSize = Number(process.env.SIMULATION_FIELD_SIZE ?? 10000),
     cashThreshold = 150,
     seed = 42,
+    adiContext,
   } = input;
 
   const random = createSeededRandom(seed);
@@ -131,6 +137,7 @@ export function runPortfolioSimulation(input: SimulationInput): SimulationResult
       variance === "high"
         ? "Tournament upside profile — wide outcome tails"
         : "Stable median projection suitable for cash consideration",
+      ...(adiContext?.notes ?? []),
     ],
     version: "sim-2.0-gpp-field",
   };

@@ -27,6 +27,12 @@ export type OwnershipPredictionInput = {
   games?: OwnershipGameContext[];
   slate?: OwnershipSlateContext;
   seed?: number;
+  adiHints?: Array<{
+    slatePlayerId: string;
+    chalkProbability?: number;
+    leverageSignal?: number;
+    socialSentiment?: number;
+  }>;
 };
 
 export type PlayerOwnershipPrediction = {

@@ -1,6 +1,6 @@
 # Version 2.2 Implementation Gate
 
-**Status:** 🟢 **OPEN — Implementation Authorized (M7)**  
+**Status:** 🟢 **OPEN — Implementation Authorized (M8)**  
 **Date opened (planning):** 2026-07-19  
 **Date opened (implementation):** 2026-07-19  
 **Parent:** [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) · [V2_PLANNING_GOVERNANCE.md](./V2_PLANNING_GOVERNANCE.md)  
@@ -14,10 +14,10 @@
 | Field | Value |
 |-------|-------|
 | Program | Version 2.2 — Alternative Data Intelligence Platform |
-| Phase | **Implementation — M7 authorized** |
+| Phase | **Implementation — M8 authorized** |
 | Authorization | ✅ [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) |
 | Architecture | ✅ Programs 2–7 complete |
-| Implementation | ✅ **M6 certified** — M7 authorized; M8 gated |
+| Implementation | ✅ **M7 certified** — M8 authorized |
 | Baseline | `main` @ `v2.1.0` (`dd52641`) |
 | Implementation branch | `v2/v2.2-adi` |
 | Amendment 001 | Unchanged — DraftKings · NFL · Classic Salary Cap |
@@ -62,8 +62,8 @@
 | M4 Platform Infrastructure | ✅ **Certified** | [V2_2_M4_CERTIFICATION_REVIEW.md](./V2_2_M4_CERTIFICATION_REVIEW.md) |
 | M5 Evidence Providers | ✅ **Certified** | [V2_2_M5_CERTIFICATION_REVIEW.md](./V2_2_M5_CERTIFICATION_REVIEW.md) |
 | M6 Evidence Fusion | ✅ **Certified** | [V2_2_M6_CERTIFICATION_REVIEW.md](./V2_2_M6_CERTIFICATION_REVIEW.md) |
-| M7 Engine Integration | 🟢 **Authorized** | M6 certified 2026-07-19 |
-| M8 Validation & Certification | 🔒 Blocked until M7 certified | — |
+| M7 Engine Integration | ✅ **Certified** | [V2_2_M7_CERTIFICATION_REVIEW.md](./V2_2_M7_CERTIFICATION_REVIEW.md) |
+| M8 Validation & Certification | 🟢 **Authorized** | M7 certified 2026-07-19 |
 
 ---
 
@@ -96,4 +96,4 @@
 
 ## Exactly one next action
 
-**Program 8 — M7:** Integrate fused evidence into V2.1 engines on `v2/v2.2-adi` per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md). M6 certified: [V2_2_M6_CERTIFICATION_REVIEW.md](./V2_2_M6_CERTIFICATION_REVIEW.md).
+**Program 8 — M8:** Execute full validation and release certification on `v2/v2.2-adi` per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md). M7 certified: [V2_2_M7_CERTIFICATION_REVIEW.md](./V2_2_M7_CERTIFICATION_REVIEW.md).

@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     "@alpha-dfs/shared",
     "@alpha-dfs/adi-platform",
     "@alpha-dfs/adi-providers",
+    "@alpha-dfs/evidence-fusion",
     "@alpha-dfs/connectors",
     "@alpha-dfs/database",
     "@alpha-dfs/observability",
