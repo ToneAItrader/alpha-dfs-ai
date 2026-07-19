@@ -31,9 +31,6 @@ export default defineConfig({
     url: `${baseURL}/dashboard`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
-    env: {
-      ...process.env,
-      ...getE2eEnv(),
-    },
+    env: getE2eEnv(),
   },
 });

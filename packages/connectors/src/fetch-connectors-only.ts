@@ -4,7 +4,12 @@ import {
   retryOptionsForConnector,
 } from "./connector-fetch-policy";
 import { fetchWithRetry } from "./retry";
-import type { ConnectorContext, ConnectorFetchResult, ConnectorRegistry } from "./types";
+import type {
+  ConnectorContext,
+  ConnectorFetchResult,
+  ConnectorRegistry,
+  SlateConnectorPayload,
+} from "./types";
 
 export type FetchConnectorsOnlyResult =
   | {

@@ -312,9 +312,6 @@ export type WeatherIntelligenceResponseDto = {
   confidenceRating?: number;
 };
 
-  confidenceRating?: number;
-};
-
 /** Backend DTO — Ownership Intelligence Agent response (V2.1-9). */
 export type OwnershipIntelligenceResponseDto = {
   averagePredictedOwnership?: number;

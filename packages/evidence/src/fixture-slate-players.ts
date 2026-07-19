@@ -10,6 +10,8 @@ export type FixturePlayerInput = {
   floor: number;
   ceiling: number;
   injuryStatus: "healthy" | "questionable" | "doubtful" | "out" | "unknown";
+  practiceStatus?: string | null;
+  gameStatus?: string | null;
   domains: {
     statistical: boolean;
     injury: boolean;

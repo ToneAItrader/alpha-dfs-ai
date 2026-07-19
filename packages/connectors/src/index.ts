@@ -6,6 +6,7 @@ export type {
   DataConnector,
   RetryOptions,
   SlateConnectorPayload,
+  SlateGamePayload,
   SlatePlayerPayload,
 } from "./types";
 export { DEFAULT_RETRY } from "./types";

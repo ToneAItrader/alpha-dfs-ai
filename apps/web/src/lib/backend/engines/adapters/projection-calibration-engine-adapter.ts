@@ -1,5 +1,4 @@
 import {
-  applyCalibrationsToPlayers,
   calibrateProjections,
   isProjectionCalibrationEnabled,
 } from "@alpha-dfs/projection-calibration";

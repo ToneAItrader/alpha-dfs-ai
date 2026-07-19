@@ -1,4 +1,4 @@
-import type { AnalysisRunStatus } from "@/types/dto/analysis-responses.dto";
+import type { AnalysisRunStatus } from "@/types/shared/confidence";
 
 /** Display status shared by header and dashboard status bar. */
 export type PipelineDisplayStatus = "idle" | "analyzing" | "complete";
