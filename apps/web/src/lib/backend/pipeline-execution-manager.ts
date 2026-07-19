@@ -18,6 +18,7 @@ import {
   structuredLog,
   withTimeout,
 } from "@alpha-dfs/observability";
+import { getAdiPlatform, isAdiPlatformEnabled, resetAdiPlatform } from "@alpha-dfs/adi-platform";
 import { assembleAnalysisBundle } from "@/lib/backend/dto-assembler";
 import { setCachedAnalysisBundle } from "@/lib/backend/analysis-cache";
 import type { AnalysisBundleResponseDto } from "@/types/dto/analysis-responses.dto";
@@ -176,8 +177,18 @@ export function createPipelineExecutionManager(): PipelineExecutionManager {
           const phasesCompleted: PipelinePhase[] = [];
           const outputs: Partial<EngineOutputs> = {};
           const completedAt = new Date().toISOString();
+          const adiEnabled = isAdiPlatformEnabled();
+          const adiPlatform = adiEnabled ? getAdiPlatform() : null;
 
           try {
+            if (adiPlatform) {
+              await adiPlatform.prepare(context, correlation?.correlationId ?? runId);
+              const adiEvidence = adiPlatform.getNormalizedEvidence();
+              if (adiEvidence) {
+                outputs.adiEvidence = adiEvidence;
+              }
+            }
+
             for (const phase of PIPELINE_PHASE_ORDER) {
               const phaseResult = await runPhase(phase, context, engines, outputs);
               if (!phaseResult.ok) {
@@ -235,6 +246,10 @@ export function createPipelineExecutionManager(): PipelineExecutionManager {
               durationMs,
             });
 
+            if (adiPlatform) {
+              await adiPlatform.complete(runId, true, durationMs);
+            }
+
             return {
               result: {
                 runId,
@@ -245,11 +260,18 @@ export function createPipelineExecutionManager(): PipelineExecutionManager {
               bundle,
             };
           } catch (error) {
+            if (adiPlatform) {
+              await adiPlatform.complete(runId, false, Date.now() - pipelineStarted);
+            }
             structuredLog("error", "pipeline", "pipeline.failed", "Pipeline execution failed", {
               runId,
               failureClass: classifyFailure(error),
             });
             throw error;
+          } finally {
+            if (adiPlatform) {
+              await adiPlatform.shutdown();
+            }
           }
         },
       );
@@ -268,4 +290,5 @@ export function getPipelineExecutionManager(): PipelineExecutionManager {
 
 export function resetPipelineExecutionManager(): void {
   cachedManager = null;
+  resetAdiPlatform();
 }

@@ -332,6 +332,8 @@ export type EngineOutputs = {
   confidence: ConfidenceEngineOutput;
   portfolio: PortfolioEngineOutput;
   simulation: SimulationEngineOutput;
+  /** Read-only fused evidence — written by ADI platform; populated in M6+. */
+  adiEvidence?: import("./adi-evidence").AdiNormalizedEvidenceBundle;
 };
 
 export type EngineRegistry = {
