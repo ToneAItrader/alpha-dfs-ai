@@ -106,15 +106,15 @@ All must be satisfied before V2.2 **implementation** begins (Program 6).
 |------|-----------|--------|
 | E1 | V2.1 Release Candidate certified | ✅ `v2.1.0` |
 | E2 | V2.2 Program Authorization (this document) | ✅ 2026-07-19 |
-| E3 | ABR-001 Architecture Baseline updated for V2.2 | ⏳ Program 2 |
-| E4 | ADR-019 ADI Platform — GPT-5.5 + Opus review | ⏳ Program 2–3 |
-| E5 | ADR-020 Connector Framework | ⏳ Program 2 |
-| E6 | ADR-021 Canonical Evidence Schema | ⏳ Program 2 |
-| E7 | ADR-022 Evidence Taxonomy & Decision Policy | ⏳ Program 2 |
-| E8 | V2.2 Engineering Plan (epics, milestones) | ⏳ Program 5 |
-| E9 | V2.2 implementation gate explicitly OPEN | ⏳ After E3–E8 |
+| E3 | ABR-001 Architecture Baseline updated for V2.2 | ✅ [ABR-001-V2_2_ARCHITECTURE_BASELINE.md](./ABR-001-V2_2_ARCHITECTURE_BASELINE.md) |
+| E4 | ADR-019 ADI Platform — GPT-5.5 + Opus review | ✅ [V2_2_ADR-019_REVIEW.md](../reviews/V2_2_ADR-019_REVIEW.md) |
+| E5 | ADR-020 Evidence Fusion Engine | ✅ [ADR-020-V2_2_EVIDENCE_FUSION_ENGINE.md](./ADR-020-V2_2_EVIDENCE_FUSION_ENGINE.md) |
+| E6 | ADR-021 Connector Framework | ✅ [ADR-021-V2_2_CONNECTOR_FRAMEWORK.md](./ADR-021-V2_2_CONNECTOR_FRAMEWORK.md) |
+| E7 | ADR-022 Agent Orchestration | ✅ [ADR-022-V2_2_AGENT_ORCHESTRATION.md](./ADR-022-V2_2_AGENT_ORCHESTRATION.md) |
+| E8 | V2.2 Engineering Plan (epics, milestones) | ✅ [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md) |
+| E9 | V2.2 implementation gate explicitly OPEN | ✅ [V2_2_ARCHITECTURE_READINESS_REVIEW.md](./V2_2_ARCHITECTURE_READINESS_REVIEW.md) |
 
-**Current authorization:** Planning and architecture only (Programs 1–5). **No production code** until E9.
+**Current authorization:** M4 implementation on `v2/v2.2-adi`. M5–M8 gated per milestone certification.
 
 ---
 
@@ -278,4 +278,4 @@ Optimized Player Lineups
 
 ## Exactly one next action
 
-**Program 2 — Task 2.1:** Produce complete V2.2 architecture (ABR-001 revision) including system, event, data, connector, agent, storage, security, scaling, failure, observability, and deployment architecture. **No implementation code.**
+**Program 8 — M4:** Implement platform infrastructure on branch `v2/v2.2-adi` per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md).

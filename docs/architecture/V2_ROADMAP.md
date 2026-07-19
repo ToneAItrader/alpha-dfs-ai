@@ -29,7 +29,7 @@ Version 2 expands Alpha DFS AI from a validated single-sport, single-platform ma
 |-------|-------|------|----------------|
 | **V2.0 — Foundation** | Ops maturity, QA, deferred V1 gaps | ADR-004–008 | ✅ **Complete** — [V2_FOUNDATION_COMPLETION_RECORD.md](./V2_FOUNDATION_COMPLETION_RECORD.md) |
 | **V2.1 — Intelligence** | Slate UI, simulation, providers, ownership | ADR-010–018 | ✅ **Complete (RC)** — [V2_1_PROGRAM_COMPLETION_RECORD.md](./V2_1_PROGRAM_COMPLETION_RECORD.md) |
-| **V2.2 — ADI Platform** | Alternative Data Intelligence (internal) | ADR-019+ (TBD) | 🟡 **Planning authorized** — [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) |
+| **V2.2 — ADI Platform** | Alternative Data Intelligence (internal) | ADR-019–022 | 🟢 **Implementation authorized (M4)** — [V2_2_ARCHITECTURE_READINESS_REVIEW.md](./V2_2_ARCHITECTURE_READINESS_REVIEW.md) |
 | **V2.3 — Sport** | NBA/MLB/NHL plugins (Amendment 003) | TBD | Not started |
 | **V2.4 — Advanced** | Contest, bankroll, late swap, AI (Amendment 004) | TBD | Not started |
 
@@ -57,7 +57,15 @@ V2.1 Intelligence (ADR-010..018)
   → Certify V2.1 ✅
   → Release Candidate on `main` ✅
         ↓
-V2.2 ADI Platform (not authorized)
+V2.2 ADI Platform (ADR-019..022)
+  → Planning package ✅
+  → Opus ADR-019 review ✅ (Approve with revisions)
+  → Architecture readiness ✅
+  → Gate open ✅ (M4 authorized)
+  → Implement V2.2 (branch v2/v2.2-adi) ← YOU ARE HERE
+  → Certify V2.2 → v2.2.0
+        ↓
+V2.3 Sport (not authorized)
 ```
 
 Detail: [V2_DEPENDENCY_MAP.md](./V2_DEPENDENCY_MAP.md)
@@ -95,6 +103,24 @@ Detail: [V2_DEPENDENCY_MAP.md](./V2_DEPENDENCY_MAP.md)
 **Recommended impl order:** V2.1-2 → V2.1-1 → V2.1-4 → V2.1-5 → V2.1-6 → V2.1-3 → V2.1-7 → V2.1-8 → V2.1-9
 
 **Gate:** [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md) · [ADR-009](./ADR-009-PRISMA_MIGRATION_POLICY.md) before first schema change
+
+---
+
+## Phase V2.2 — ADI Platform
+
+| ID | Capability | ADR | Status |
+|----|------------|-----|--------|
+| V2.2-M4 | Platform infrastructure | ADR-019, ADR-022 | 🟢 Authorized |
+| V2.2-M5 | Seven evidence providers | ADR-021 | 🔒 After M4 |
+| V2.2-M6 | Evidence Fusion Engine | ADR-020 | 🔒 After M5 |
+| V2.2-M7 | Engine integration | Milestone plan | 🔒 After M6 |
+| V2.2-M8 | Validation & certification | [V2_2_VALIDATION_STRATEGY.md](./V2_2_VALIDATION_STRATEGY.md) | 🔒 After M7 |
+
+**Recommended impl order:** M4 → M5 → M6 → M7 → M8
+
+Detail: [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md) · [ABR-001-V2_2_ARCHITECTURE_BASELINE.md](./ABR-001-V2_2_ARCHITECTURE_BASELINE.md)
+
+**Gate:** [V2_2_IMPLEMENTATION_GATE.md](./V2_2_IMPLEMENTATION_GATE.md) — M4 open
 
 ---
 
@@ -138,9 +164,17 @@ Background workers (general), automated lineup submission, mobile apps, multi-te
 - [x] Phase 2A ADR revisions applied (CF-1, HP-1–HP-4)
 - [x] V2.1 implementation gate closed — [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md)
 - [x] V2.1 Release Candidate — [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md)
+- [x] V2.2 program authorization — [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md)
+- [x] V2.2 architecture baseline — [ABR-001-V2_2_ARCHITECTURE_BASELINE.md](./ABR-001-V2_2_ARCHITECTURE_BASELINE.md)
+- [x] V2.2 ADR package — ADR-019 through ADR-022
+- [x] Opus V2.2 ADR-019 review — [V2_2_ADR-019_REVIEW.md](../reviews/V2_2_ADR-019_REVIEW.md)
+- [x] V2.2 engineering specifications — Programs 5 complete
+- [x] V2.2 engineering plan — [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md)
+- [x] V2.2 architecture readiness — [V2_2_ARCHITECTURE_READINESS_REVIEW.md](./V2_2_ARCHITECTURE_READINESS_REVIEW.md)
+- [ ] V2.2 implementation complete — M4–M8
 
 ---
 
 ## Exactly one next action
 
-**V2.2 planning gate** — ABR-001 + V2.2 Phase Charter (not authorized until explicit approval). See Release Completion Program Phase 1.
+**Program 8 — M4:** Implement platform infrastructure on `v2/v2.2-adi` per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md).

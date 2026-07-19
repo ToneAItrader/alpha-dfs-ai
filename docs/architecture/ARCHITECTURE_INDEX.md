@@ -1,6 +1,6 @@
 # Alpha DFS AI — Documentation Index
 
-**Updated:** 2026-07-19 (V2.1 Release Candidate)  
+**Updated:** 2026-07-19 (V2.2 Architecture Approved — M4 Authorized)  
 **Workflow:** [DUAL_TRACK_WORKFLOW.md](../operations/DUAL_TRACK_WORKFLOW.md) — dual-track (V1 maintenance + V2 planning)
 
 ---
@@ -45,7 +45,16 @@ Models: [MODEL_ASSIGNMENT.md](../operations/MODEL_ASSIGNMENT.md)
 | [V2_1_PROGRAM_COMPLETION_RECORD.md](./V2_1_PROGRAM_COMPLETION_RECORD.md) | **V2.1 program completion — Release Candidate** |
 | [releases/V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md) | **V2.1 release notes (v2.1.0 RC)** |
 | [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) | **V2.2 program authorization (V2-CC-003)** |
-| [V2_2_IMPLEMENTATION_GATE.md](./V2_2_IMPLEMENTATION_GATE.md) | **V2.2 gate — OPEN (planning only)** |
+| [V2_2_IMPLEMENTATION_GATE.md](./V2_2_IMPLEMENTATION_GATE.md) | **V2.2 gate — OPEN (M4 authorized)** |
+| [V2_2_ARCHITECTURE_READINESS_REVIEW.md](./V2_2_ARCHITECTURE_READINESS_REVIEW.md) | **V2.2 architecture readiness — Approved for Implementation** |
+| [ABR-001-V2_2_ARCHITECTURE_BASELINE.md](./ABR-001-V2_2_ARCHITECTURE_BASELINE.md) | **V2.2 architecture baseline** |
+| [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md) | **V2.2 milestones M4–M8** |
+| [V2_2_VALIDATION_STRATEGY.md](./V2_2_VALIDATION_STRATEGY.md) | **V2.2 validation & certification** |
+| [V2_2_EVIDENCE_PROVIDER_SPECIFICATIONS.md](./V2_2_EVIDENCE_PROVIDER_SPECIFICATIONS.md) | **Seven evidence provider specs** |
+| [V2_2_EVENT_CONTRACTS.md](./V2_2_EVENT_CONTRACTS.md) | **V2.2 event contracts** |
+| [V2_2_API_CONTRACTS.md](./V2_2_API_CONTRACTS.md) | **V2.2 internal API contracts** |
+| [V2_2_DATA_MODEL.md](./V2_2_DATA_MODEL.md) | **V2.2 canonical evidence schema** |
+| [reviews/V2_2_ADR-019_REVIEW.md](../reviews/V2_2_ADR-019_REVIEW.md) | **V2.2 ADR-019 independent review** |
 | [V2_FOUNDATION_COMPLETION_RECORD.md](./V2_FOUNDATION_COMPLETION_RECORD.md) | **V2.0 Foundation completion record** |
 | [reviews/V2_ADR_PACKAGE_REVIEW.md](../reviews/V2_ADR_PACKAGE_REVIEW.md) | V2.0 ADR package review |
 | [reviews/V2_1_ADR_PACKAGE_REVIEW.md](../reviews/V2_1_ADR_PACKAGE_REVIEW.md) | V2.1 ADR review — Approved (Phase 2A complete) |
@@ -79,6 +88,10 @@ Models: [MODEL_ASSIGNMENT.md](../operations/MODEL_ASSIGNMENT.md)
 | [ADR-016](./ADR-016-V2_1_7_PROJECTION_CALIBRATION.md) | V2.1-7 Projection calibration |
 | [ADR-017](./ADR-017-V2_1_8_MULTI_LINEUP_EXPOSURE.md) | V2.1-8 Multi-lineup exposure |
 | [ADR-018](./ADR-018-V2_1_9_OWNERSHIP_PREDICTION.md) | V2.1-9 Ownership prediction |
+| [ADR-019](./ADR-019-V2_2_ADI_PLATFORM.md) | V2.2 ADI Platform |
+| [ADR-020](./ADR-020-V2_2_EVIDENCE_FUSION_ENGINE.md) | V2.2 Evidence Fusion Engine |
+| [ADR-021](./ADR-021-V2_2_CONNECTOR_FRAMEWORK.md) | V2.2 Connector Framework |
+| [ADR-022](./ADR-022-V2_2_AGENT_ORCHESTRATION.md) | V2.2 Agent Orchestration |
 
 ---
 
@@ -138,4 +151,5 @@ Slate Intelligence → Agents → Evidence → Scoring → PCE → PIE → Simul
 **V1 RC validated** — [RC_VALIDATION_REPORT.md](../operations/RC_VALIDATION_REPORT.md)  
 **V2.0 Foundation complete** — [V2_FOUNDATION_COMPLETION_RECORD.md](./V2_FOUNDATION_COMPLETION_RECORD.md)  
 **V2.1 Release Candidate** — [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md) · [V2_1_IMPLEMENTATION_GATE.md](./V2_1_IMPLEMENTATION_GATE.md) **CLOSED**  
-**Next:** V2.2 planning (not authorized)
+**V2.2 ADI Platform** — [V2_2_IMPLEMENTATION_GATE.md](./V2_2_IMPLEMENTATION_GATE.md) **OPEN (M4 authorized)** · [V2_2_ARCHITECTURE_READINESS_REVIEW.md](./V2_2_ARCHITECTURE_READINESS_REVIEW.md)  
+**Next:** Program 8 — M4 Platform Infrastructure on `v2/v2.2-adi`

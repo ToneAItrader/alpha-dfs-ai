@@ -1,8 +1,10 @@
 # Version 2.2 Implementation Gate
 
-**Status:** 🟡 **OPEN — Planning Only** (implementation blocked until architecture approved)  
-**Date opened:** 2026-07-19  
+**Status:** 🟢 **OPEN — Implementation Authorized (M4)**  
+**Date opened (planning):** 2026-07-19  
+**Date opened (implementation):** 2026-07-19  
 **Parent:** [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) · [V2_PLANNING_GOVERNANCE.md](./V2_PLANNING_GOVERNANCE.md)  
+**Readiness:** [V2_2_ARCHITECTURE_READINESS_REVIEW.md](./V2_2_ARCHITECTURE_READINESS_REVIEW.md) — **Approved for Implementation**  
 **Baseline:** V2.1 Release Candidate — [V2_1_RELEASE_NOTES.md](../operations/releases/V2_1_RELEASE_NOTES.md) · tag `v2.1.0`
 
 ---
@@ -12,11 +14,12 @@
 | Field | Value |
 |-------|-------|
 | Program | Version 2.2 — Alternative Data Intelligence Platform |
-| Phase | **Planning & architecture** |
+| Phase | **Implementation — M4 authorized** |
 | Authorization | ✅ [V2_2_PROGRAM_AUTHORIZATION.md](./V2_2_PROGRAM_AUTHORIZATION.md) |
-| Implementation | 🚫 **Blocked** until entry gates E3–E8 satisfied |
+| Architecture | ✅ Programs 2–7 complete |
+| Implementation | ✅ **M4 authorized** — M5–M8 gated per milestone |
 | Baseline | `main` @ `v2.1.0` (`dd52641`) |
-| Planned branch | `v2/v2.2-adi` |
+| Implementation branch | `v2/v2.2-adi` |
 | Amendment 001 | Unchanged — DraftKings · NFL · Classic Salary Cap |
 
 ---
@@ -28,26 +31,39 @@
 | Change ID | V2-CC-003 |
 | Program | Version 2.2 ADI Platform |
 | Authorization date | 2026-07-19 |
-| Authorized workstream | B — Version 2 Program → Planning |
-| Authorized work (current) | Programs 1–5 — governance and architecture only |
-| Implementation authorization | Pending ADR-019–022 + engineering plan |
+| Implementation authorization date | 2026-07-19 |
+| Authorized workstream | B — Version 2 Program → Implementation (M4) |
+| Authorized work (current) | M4 Platform Infrastructure only |
 | Constraints | No V2.1 breaking changes; no ADI UI; ADR-009 for schema |
 | Rollback | Abandon `v2/v2.2-adi`; `main` @ `v2.1.0` unchanged |
 
 ---
 
-## Entry criteria (implementation — not yet satisfied)
+## Entry criteria (implementation)
 
 | # | Criterion | Status |
 |---|-----------|--------|
 | E1 | V2.1 RC certified | ✅ |
 | E2 | Program authorization | ✅ |
-| E3 | ABR-001 V2.2 revision | ⏳ |
-| E4 | ADR-019 + Opus review | ⏳ |
-| E5 | ADR-020 Connector Framework | ⏳ |
-| E6 | ADR-021 Evidence Schema | ⏳ |
-| E7 | ADR-022 Evidence Taxonomy | ⏳ |
-| E8 | V2.2 Engineering Plan | ⏳ |
+| E3 | ABR-001 V2.2 revision | ✅ [ABR-001-V2_2_ARCHITECTURE_BASELINE.md](./ABR-001-V2_2_ARCHITECTURE_BASELINE.md) |
+| E4 | ADR-019 + Opus review | ✅ [V2_2_ADR-019_REVIEW.md](../reviews/V2_2_ADR-019_REVIEW.md) |
+| E5 | ADR-020 Evidence Fusion Engine | ✅ |
+| E6 | ADR-021 Connector Framework | ✅ |
+| E7 | ADR-022 Agent Orchestration | ✅ |
+| E8 | V2.2 Engineering Plan | ✅ [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md) |
+| E9 | Architecture Readiness Review | ✅ [V2_2_ARCHITECTURE_READINESS_REVIEW.md](./V2_2_ARCHITECTURE_READINESS_REVIEW.md) |
+
+---
+
+## Milestone gates
+
+| Milestone | Status | Authorization |
+|-----------|--------|---------------|
+| M4 Platform Infrastructure | 🟢 **Authorized** | This gate |
+| M5 Evidence Providers | 🔒 Blocked until M4 certified | — |
+| M6 Evidence Fusion | 🔒 Blocked until M5 certified | — |
+| M7 Engine Integration | 🔒 Blocked until M6 certified | — |
+| M8 Validation & Certification | 🔒 Blocked until M7 certified | — |
 
 ---
 
@@ -55,29 +71,29 @@
 
 | Criterion | Requirement |
 |-----------|-------------|
-| All V2.2 milestones M4–M8 complete | Per engineering plan |
-| Regression | ≥ 247 pass; zero V2.1 behavioral regression |
-| E2E | 11/11 pass |
+| All V2.2 milestones M4–M8 complete | Per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md) |
+| Regression | ≥ 320 pass; zero V2.1 behavioral regression |
+| E2E | 16/16 pass |
 | Build | Production build pass |
 | Completion record | V2.2 program completion published |
 | No ADI UI | Architecture audit confirms |
 
 ---
 
-## Authorized scope (when implementation opens)
+## Authorized scope
 
-| Component | ADR |
-|-----------|-----|
+| Component | ADR / Plan |
+|-----------|------------|
 | ADI Platform | ADR-019 |
-| Connector Framework | ADR-020 |
-| Canonical Evidence Schema | ADR-021 |
-| Evidence Taxonomy & Policy | ADR-022 |
-| Seven evidence providers | Milestone plan |
-| Evidence Fusion Engine | ADR-019 |
-| Engine integration | Milestone plan |
+| Evidence Fusion Engine | ADR-020 |
+| Connector Framework | ADR-021 |
+| Agent Orchestration | ADR-022 |
+| Seven evidence providers | M5 |
+| Engine integration | M7 |
+| Validation | [V2_2_VALIDATION_STRATEGY.md](./V2_2_VALIDATION_STRATEGY.md) |
 
 ---
 
 ## Exactly one next action
 
-**Program 2 — Complete V2.2 Architecture (ABR-001).** Planning gate remains open; implementation gate stays blocked.
+**Program 8 — M4:** Create branch `v2/v2.2-adi` and implement platform infrastructure per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md).
