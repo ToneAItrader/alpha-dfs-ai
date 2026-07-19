@@ -33,7 +33,7 @@
 | Authorization date | 2026-07-19 |
 | Implementation authorization date | 2026-07-19 |
 | Authorized workstream | B — Version 2 Program → Implementation (M4) |
-| Authorized work (current) | M4 Platform Infrastructure only |
+| Authorized work (current) | M5 Evidence Providers |
 | Constraints | No V2.1 breaking changes; no ADI UI; ADR-009 for schema |
 | Rollback | Abandon `v2/v2.2-adi`; `main` @ `v2.1.0` unchanged |
 
@@ -59,8 +59,8 @@
 
 | Milestone | Status | Authorization |
 |-----------|--------|---------------|
-| M4 Platform Infrastructure | 🟢 **Authorized** | This gate |
-| M5 Evidence Providers | 🔒 Blocked until M4 certified | — |
+| M4 Platform Infrastructure | ✅ **Certified** | [V2_2_M4_CERTIFICATION_REVIEW.md](./V2_2_M4_CERTIFICATION_REVIEW.md) |
+| M5 Evidence Providers | 🟢 **Authorized** | M4 certified 2026-07-19 |
 | M6 Evidence Fusion | 🔒 Blocked until M5 certified | — |
 | M7 Engine Integration | 🔒 Blocked until M6 certified | — |
 | M8 Validation & Certification | 🔒 Blocked until M7 certified | — |
@@ -96,4 +96,4 @@
 
 ## Exactly one next action
 
-**Program 8 — M4:** Create branch `v2/v2.2-adi` and implement platform infrastructure per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md).
+**Program 8 — M5:** Implement evidence providers on `v2/v2.2-adi` per [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md). M4 certified: [V2_2_M4_CERTIFICATION_REVIEW.md](./V2_2_M4_CERTIFICATION_REVIEW.md).

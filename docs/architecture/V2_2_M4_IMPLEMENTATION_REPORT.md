@@ -3,7 +3,7 @@
 **Milestone:** M4 — Platform Infrastructure  
 **Branch:** `v2/v2.2-adi`  
 **Date:** 2026-07-19  
-**Status:** ✅ Complete — Pending M4 Certification Review  
+**Status:** ✅ Certified — M5 Authorized  
 **Model:** Composer 2.5  
 **Related:** [V2_2_ENGINEERING_PLAN.md](./V2_2_ENGINEERING_PLAN.md) · [ADR-019-V2_2_ADI_PLATFORM.md](./ADR-019-V2_2_ADI_PLATFORM.md)
 
@@ -139,4 +139,4 @@ Fusion metrics (`adi.fusion.*`) defined in `metrics.ts` for M6 activation.
 
 ## Exactly one next action
 
-**M4 Certification Review (GPT-5.5):** Confirm acceptance criteria and authorize M5.
+**M4 Certification Review (GPT-5.5):** ✅ [V2_2_M4_CERTIFICATION_REVIEW.md](./V2_2_M4_CERTIFICATION_REVIEW.md) — Approved for M5
