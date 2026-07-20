@@ -47,9 +47,9 @@ No UI changes. No breaking V2.1 API changes.
 - [x] Final certification review published
 - [x] Release notes published
 - [x] Evidence package published
-- [ ] Merge `v2/v2.2-adi` → `main` (release engineering)
-- [ ] Tag `v2.2.0`
-- [ ] GitHub Release
+- [x] Merge `v2/v2.2-adi` → `main` (release engineering) — `c409f75`
+- [x] Tag `v2.2.0`
+- [ ] GitHub Release (requires remote)
 
 ---
 

@@ -5,7 +5,7 @@
 **Branch:** `v2/v2.2-adi`  
 **Date:** 2026-07-19  
 **Status:** ✅ **Complete** — Release Candidate  
-**Release:** [V2_2_RELEASE_NOTES.md](../operations/releases/V2_2_RELEASE_NOTES.md) · pending merge · tag `v2.2.0`
+**Release:** [V2_2_RELEASE_NOTES.md](../operations/releases/V2_2_RELEASE_NOTES.md) · `main` @ `c409f75` · tag `v2.2.0`
 
 ---
 
