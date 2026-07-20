@@ -86,4 +86,4 @@ Do not begin V2.3 planning until OP-8 completes. Candidate areas (architecture/p
 
 ## Exactly one next action
 
-**Complete OP-1:** Configure GitHub remote and run `./scripts/release/publish-github-release.sh <url>`.
+**Complete OP-1:** Authenticate to GitHub and run `./scripts/release/publish-github-release.sh`.

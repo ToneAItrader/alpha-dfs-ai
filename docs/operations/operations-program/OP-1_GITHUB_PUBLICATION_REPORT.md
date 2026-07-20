@@ -4,9 +4,10 @@
 **Date:** 2026-07-19  
 **Executor:** Composer 2.5  
 **Release:** v2.2.0  
-**Status:** ⚠️ **Remote configured — publication blocked pending GitHub authentication**
+**Status:** ✅ **Complete** — published 2026-07-19
 
-**Remote:** `https://github.com/ToneAItrader/alpha-dfs-ai.git`
+**Remote:** `https://github.com/ToneAItrader/alpha-dfs-ai.git`  
+**Release:** https://github.com/ToneAItrader/alpha-dfs-ai/releases/tag/v2.2.0
 
 ---
 
