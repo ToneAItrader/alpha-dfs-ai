@@ -4,6 +4,7 @@ import {
   engineSuccess,
   type SimulationEngine,
 } from "@alpha-dfs/shared";
+import { buildSimulationAdiContext } from "@alpha-dfs/evidence-fusion";
 
 /** Adapter — Portfolio Simulation package implementing SimulationEngine port. */
 export function createSimulationEngineAdapter(): SimulationEngine {
@@ -22,6 +23,8 @@ export function createSimulationEngineAdapter(): SimulationEngine {
         );
       }
 
+      const adiContext = buildSimulationAdiContext(context.priorOutputs?.adiEvidence);
+
       return engineSuccess(
         runPortfolioSimulation({
           playerAnalysis,
@@ -29,6 +32,11 @@ export function createSimulationEngineAdapter(): SimulationEngine {
           confidence,
           simulationCount: Number(process.env.SIMULATION_COUNT ?? 10000),
           fieldSize: Number(process.env.SIMULATION_FIELD_SIZE ?? 10000),
+          adiContext: {
+            elevatedTotalGames: adiContext.elevatedTotalGames,
+            sharpSignals: adiContext.sharpSignals,
+            notes: adiContext.notes,
+          },
         }),
       );
     },

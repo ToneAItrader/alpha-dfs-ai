@@ -97,8 +97,9 @@ function roundOwnership(value: number): number {
 export function predictOwnershipBaseline(
   input: OwnershipPredictionInput,
 ): OwnershipPredictionResult {
-  const { players, games, slate, seed = 42 } = input;
+  const { players, games, slate, seed = 42, adiHints = [] } = input;
   const random = createSeededRandom(seed);
+  const adiHintByPlayer = new Map(adiHints.map((hint) => [hint.slatePlayerId, hint]));
 
   if (players.length === 0) {
     return {
@@ -132,7 +133,16 @@ export function predictOwnershipBaseline(
     }
 
     const raw = rawPredictedScore(player, players, games, slate);
-    const normalized = (raw / rawTotal) * TARGET_OWNERSHIP_MASS;
+    const hint = adiHintByPlayer.get(player.slatePlayerId);
+    const adiScale =
+      hint?.chalkProbability !== undefined
+        ? 1 + (hint.chalkProbability - 0.5) * 0.08
+        : hint?.leverageSignal !== undefined
+          ? 1 - hint.leverageSignal * 0.05
+          : hint?.socialSentiment !== undefined
+            ? 1 + hint.socialSentiment * 0.04
+            : 1;
+    const normalized = (raw / rawTotal) * TARGET_OWNERSHIP_MASS * adiScale;
     const jitter = (random() - 0.5) * 0.4;
     return {
       slatePlayerId: player.slatePlayerId,
@@ -167,6 +177,7 @@ export function predictOwnershipBaseline(
 
   const feedCount = predictions.filter((player) => player.ownershipSource === "feed").length;
   const predictedCount = predictions.filter((player) => player.ownershipSource === "predicted").length;
+  const adiHintCount = adiHints.length;
 
   return {
     players: predictions,
@@ -188,7 +199,8 @@ export function predictOwnershipBaseline(
       slate?.recommendedStrategy
         ? `Slate strategy ${slate.recommendedStrategy} applied to ownership scaling`
         : "Slate strategy scaling skipped — slate intelligence unavailable",
-    ],
+      adiHintCount > 0 ? `ADI ownership hints applied for ${adiHintCount} player(s)` : "",
+    ].filter(Boolean),
     version: "own-1.0",
   };
 }

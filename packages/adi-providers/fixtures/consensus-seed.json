@@ -1,0 +1,31 @@
+{
+  "projections": [
+    {
+      "sourceId": "consensus-fp",
+      "playerName": "Tyreek Hill",
+      "team": "MIA",
+      "projection": 18.4,
+      "sources": 5,
+      "variance": 2.1,
+      "confidence": 0.82
+    },
+    {
+      "sourceId": "consensus-cbs",
+      "playerName": "Stefon Diggs",
+      "team": "HOU",
+      "projection": 16.2,
+      "sources": 4,
+      "variance": 1.8,
+      "confidence": 0.78
+    },
+    {
+      "sourceId": "consensus-rotowire",
+      "playerName": "Low Source Player",
+      "team": "JAX",
+      "projection": 9.5,
+      "sources": 1,
+      "variance": 0,
+      "confidence": 0.4
+    }
+  ]
+}

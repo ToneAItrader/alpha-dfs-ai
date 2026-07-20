@@ -19,10 +19,10 @@ export type PortfolioCandidate = {
 const SALARY_CAP = 50000;
 const CLASSIC_SLOTS = ["QB", "RB", "RB", "WR", "WR", "WR", "TE", "FLEX", "DST"] as const;
 
-function valueScore(player: PortfolioCandidate): number {
+function valueScore(player: PortfolioCandidate, adiBoost = 0): number {
   const confidenceMultiplier =
     player.confidenceTier === "high" ? 1.05 : player.confidenceTier === "low" ? 0.9 : 1;
-  return (player.projection / (player.salary / 1000)) * confidenceMultiplier;
+  return (player.projection / (player.salary / 1000)) * confidenceMultiplier * (1 + adiBoost);
 }
 
 function canFillSlot(position: string, slot: string): boolean {
@@ -53,15 +53,26 @@ function compareCandidates(
   b: PortfolioCandidate,
   mode: "primary" | "hail_mary",
   variantIndex: number,
+  adiBoostByPlayer: Map<string, number>,
 ): number {
   const variantBias =
     ((a.slatePlayerId.charCodeAt(0) + variantIndex) % 7) * 0.001 -
     ((b.slatePlayerId.charCodeAt(0) + variantIndex) % 7) * 0.001;
 
   if (mode === "hail_mary") {
-    return b.ceiling / b.salary - a.ceiling / a.salary + variantBias;
+    return (
+      b.ceiling / b.salary -
+      a.ceiling / a.salary +
+      (adiBoostByPlayer.get(b.slatePlayerId) ?? 0) -
+      (adiBoostByPlayer.get(a.slatePlayerId) ?? 0) +
+      variantBias
+    );
   }
-  return valueScore(b) - valueScore(a) + variantBias;
+  return (
+    valueScore(b, adiBoostByPlayer.get(b.slatePlayerId) ?? 0) -
+    valueScore(a, adiBoostByPlayer.get(a.slatePlayerId) ?? 0) +
+    variantBias
+  );
 }
 
 /** Backtracking lineup builder — finds a valid classic lineup within salary cap. */
@@ -70,6 +81,7 @@ export function buildGreedyLineup(
   _usedIds: Set<string>,
   mode: "primary" | "hail_mary",
   variantIndex = 0,
+  adiBoostByPlayer: Map<string, number> = new Map(),
 ): PortfolioCandidate[] | null {
   const pool = players.filter((player) => !_usedIds.has(player.slatePlayerId));
 
@@ -104,7 +116,7 @@ export function buildGreedyLineup(
           canFillSlot(player.position, slot) &&
           player.salary <= maxSalary,
       )
-      .sort((a, b) => compareCandidates(a, b, mode, variantIndex));
+      .sort((a, b) => compareCandidates(a, b, mode, variantIndex, adiBoostByPlayer));
 
     for (const candidate of candidates) {
       const result = search(slotIndex + 1, [...selected, candidate], salaryUsed + candidate.salary);
@@ -172,11 +184,13 @@ function gradeFromScore(score: number): "A" | "B" | "C" | "D" | "F" {
 export type BuildPortfolioInput = {
   candidates: PortfolioCandidate[];
   confidenceScore: number;
+  adiBoosts?: Array<{ slatePlayerId: string; boost: number }>;
 };
 
 /** Heuristic Portfolio Intelligence — backtracking construction without MILP optimizer. */
 export function buildPortfolioOutput(input: BuildPortfolioInput): PortfolioEngineOutput {
-  const { candidates, confidenceScore } = input;
+  const { candidates, confidenceScore, adiBoosts = [] } = input;
+  const adiBoostByPlayer = new Map(adiBoosts.map((entry) => [entry.slatePlayerId, entry.boost]));
   const primaryLineups: PortfolioLineupRecord[] = [];
   const hailMaryLineups: PortfolioLineupRecord[] = [];
   const primaryLineupPlayers: PortfolioCandidate[][] = [];
@@ -184,14 +198,14 @@ export function buildPortfolioOutput(input: BuildPortfolioInput): PortfolioEngin
   const emptyUsed = new Set<string>();
 
   for (let rank = 1; rank <= 4; rank += 1) {
-    const lineup = buildGreedyLineup(candidates, emptyUsed, "primary", rank - 1);
+    const lineup = buildGreedyLineup(candidates, emptyUsed, "primary", rank - 1, adiBoostByPlayer);
     if (!lineup) break;
     primaryLineupPlayers.push(lineup);
     primaryLineups.push(lineupToRecord(lineup, "primary", rank));
   }
 
   for (let rank = 1; rank <= 2; rank += 1) {
-    const lineup = buildGreedyLineup(candidates, emptyUsed, "hail_mary", rank + 10);
+    const lineup = buildGreedyLineup(candidates, emptyUsed, "hail_mary", rank + 10, adiBoostByPlayer);
     if (!lineup) break;
     hailMaryLineupPlayers.push(lineup);
     hailMaryLineups.push(lineupToRecord(lineup, "hail_mary", rank));
@@ -276,8 +290,9 @@ export function buildPortfolioOutput(input: BuildPortfolioInput): PortfolioEngin
       healthScore >= 70
         ? "Portfolio health within acceptable range"
         : "Review portfolio health metrics before submission",
+      adiBoosts.length > 0 ? `ADI portfolio signals applied to ${adiBoosts.length} candidate(s)` : "",
       ...exposureSummary.warnings.slice(0, 2),
-    ],
+    ].filter(Boolean),
     exposureSummary,
     primaryLineups,
     hailMaryLineups,

@@ -1,0 +1,7 @@
+{
+  "runId": "run-golden",
+  "slateId": "slate-golden",
+  "providerCount": 3,
+  "expectedSubjectCount": 3,
+  "expectedVersion": "fusion-1.0"
+}

@@ -1,0 +1,22 @@
+{
+  "reliability": [
+    {
+      "sourceId": "news-ap",
+      "sampleCount": 120,
+      "accuracyScore": 0.91,
+      "weight": 0.92
+    },
+    {
+      "sourceId": "social-reddit",
+      "sampleCount": 85,
+      "accuracyScore": 0.58,
+      "weight": 0.55
+    },
+    {
+      "sourceId": "consensus-fp",
+      "sampleCount": 40,
+      "accuracyScore": 0.74,
+      "weight": 0.7
+    }
+  ]
+}

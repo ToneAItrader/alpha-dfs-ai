@@ -4,6 +4,7 @@ import {
   engineSuccess,
   type PortfolioEngine,
 } from "@alpha-dfs/shared";
+import { buildPortfolioAdiBoosts } from "@alpha-dfs/evidence-fusion";
 import { getSlateDataService } from "@/lib/backend/data/slate-data-service";
 
 /** Real Portfolio Engine — heuristic PIE without MILP optimizer. */
@@ -40,6 +41,12 @@ export function createPortfolioEngineAdapter(): PortfolioEngine {
         );
 
         const slatePlayers = await getSlateDataService().slateRepository.getSlatePlayers(slateId);
+        const playerIds = slatePlayers.map((player) => player.slatePlayerId);
+        const { boosts, meta: adiMeta } = buildPortfolioAdiBoosts(
+          context.priorOutputs?.adiEvidence,
+          playerIds,
+        );
+
         const candidates: PortfolioCandidate[] = slatePlayers.map((player) => {
           const evidence = playerAnalysis.players.find(
             (record) => record.slatePlayerId === player.slatePlayerId,
@@ -67,6 +74,10 @@ export function createPortfolioEngineAdapter(): PortfolioEngine {
           buildPortfolioOutput({
             candidates,
             confidenceScore: confidence.overallConfidence,
+            adiBoosts: boosts.map((entry) => ({
+              slatePlayerId: entry.slatePlayerId,
+              boost: entry.boost,
+            })),
           }),
         );
       } catch (error) {

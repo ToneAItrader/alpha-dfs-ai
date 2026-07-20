@@ -1,0 +1,31 @@
+{
+  "headlines": [
+    {
+      "sourceId": "news-ap",
+      "playerName": "Patrick Mahomes",
+      "team": "KC",
+      "evidenceType": "practice_report",
+      "claim": "Full practice participation",
+      "direction": "positive",
+      "confidence": 0.85
+    },
+    {
+      "sourceId": "news-espn",
+      "playerName": "Travis Kelce",
+      "team": "KC",
+      "evidenceType": "injury_status",
+      "claim": "Listed questionable with ankle",
+      "direction": "negative",
+      "confidence": 0.75
+    },
+    {
+      "sourceId": "news-nfl",
+      "playerName": "Josh Allen",
+      "team": "BUF",
+      "evidenceType": "game_status",
+      "claim": "Expected to play",
+      "direction": "positive",
+      "confidence": 0.9
+    }
+  ]
+}

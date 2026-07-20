@@ -7,6 +7,7 @@ import {
   type VegasIntelligenceEngine,
   type VegasIntelligenceOutput,
 } from "@alpha-dfs/shared";
+import { applyVegasAdiOverlay } from "@alpha-dfs/evidence-fusion";
 import { getSlateMarketCache } from "@/lib/backend/slate-market-cache";
 import { getSlateDataService } from "@/lib/backend/data/slate-data-service";
 import { computeVegasIntelligence } from "../vegas-intelligence/compute-vegas-intelligence";
@@ -36,8 +37,15 @@ export function createVegasIntelligenceAgent(): IntelligenceAgent<
             players.map((player) => `${player.team}-${player.opponent}`),
           ).size;
 
-          const data = computeVegasIntelligence(games, totalGames || games.length);
-          const confidenceValue = Math.min(1, data.marketCoverage / 100);
+          const { games: overlayGames, meta: adiMeta } = applyVegasAdiOverlay(
+            games,
+            input.priorOutputs?.adiEvidence,
+          );
+          const data = computeVegasIntelligence(overlayGames, totalGames || games.length);
+          if (adiMeta.adiNotes.length > 0) {
+            data.factors.push(...adiMeta.adiNotes);
+          }
+          const confidenceValue = Math.min(1, (data.marketCoverage / 100) * adiMeta.confidenceMultiplier);
 
           return engineSuccess({
             data,

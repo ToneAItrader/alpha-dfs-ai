@@ -75,11 +75,15 @@ function positionSpread(position: string): { floorScale: number; ceilingScale: n
 function calibratePlayer(
   player: CalibrationPlayerInput,
   games: CalibrationGameContext[] | undefined,
+  adiFactor = 1,
 ): PlayerCalibrationRecord {
   const notes: string[] = [];
   const injuryFactor = INJURY_FACTORS[player.injuryStatus];
   if (player.injuryStatus !== "healthy") {
     notes.push(`Injury overlay (${player.injuryStatus}) applied`);
+  }
+  if (adiFactor !== 1) {
+    notes.push(`ADI projection adjustment (${adiFactor}) applied`);
   }
 
   const gameTotal = findGameTotal(games, player.team, player.opponent);
@@ -93,7 +97,7 @@ function calibratePlayer(
 
   const rawProjection = player.projection;
   const calibratedProjection = round(
-    rawProjection * injuryFactor * vegasScale.projection,
+    rawProjection * injuryFactor * vegasScale.projection * adiFactor,
   );
   const calibratedFloor = round(
     player.floor * injuryFactor * vegasScale.floor * spread.floorScale,
@@ -131,7 +135,10 @@ function passthroughRecord(player: CalibrationPlayerInput): PlayerCalibrationRec
 export function calibrateProjections(
   input: ProjectionCalibrationInput,
 ): ProjectionCalibrationResult {
-  const { enabled, players, games } = input;
+  const { enabled, players, games, adiAdjustments = [] } = input;
+  const adiFactorByPlayer = new Map(
+    adiAdjustments.map((entry) => [entry.slatePlayerId, entry.factor]),
+  );
 
   if (!enabled) {
     const passthrough = players.map(passthroughRecord);
@@ -153,7 +160,9 @@ export function calibrateProjections(
     };
   }
 
-  const calibrated = players.map((player) => calibratePlayer(player, games));
+  const calibrated = players.map((player) =>
+    calibratePlayer(player, games, adiFactorByPlayer.get(player.slatePlayerId) ?? 1),
+  );
   const adjustedCount = calibrated.filter(
     (record) => record.calibrationFactor !== 1 || record.calibrationNotes.length > 0,
   ).length;

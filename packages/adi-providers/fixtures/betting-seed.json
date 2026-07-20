@@ -1,0 +1,31 @@
+{
+  "picks": [
+    {
+      "sourceId": "betting-covers",
+      "gameKey": "KC-BUF",
+      "homeTeam": "KC",
+      "awayTeam": "BUF",
+      "expertCount": 6,
+      "direction": "positive",
+      "pickSide": "home",
+      "confidence": 0.71
+    },
+    {
+      "sourceId": "betting-action",
+      "playerName": "Josh Allen",
+      "team": "BUF",
+      "expertCount": 4,
+      "direction": "positive",
+      "confidence": 0.66
+    },
+    {
+      "sourceId": "betting-vsin",
+      "gameKey": "SF-DAL",
+      "homeTeam": "SF",
+      "awayTeam": "DAL",
+      "expertCount": 1,
+      "direction": "neutral",
+      "confidence": 0.3
+    }
+  ]
+}

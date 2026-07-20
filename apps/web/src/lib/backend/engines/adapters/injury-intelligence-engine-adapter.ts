@@ -7,6 +7,7 @@ import {
   type InjuryIntelligenceEngine,
   type InjuryIntelligenceOutput,
 } from "@alpha-dfs/shared";
+import { applyInjuryAdiOverlay } from "@alpha-dfs/evidence-fusion";
 import { getSlateDataService } from "@/lib/backend/data/slate-data-service";
 import { computeInjuryIntelligence } from "../injury-intelligence/compute-injury-intelligence";
 
@@ -38,8 +39,15 @@ export function createInjuryIntelligenceAgent(): IntelligenceAgent<
             );
           }
 
-          const data = computeInjuryIntelligence(players);
-          const confidenceValue = Math.min(1, data.injuryCoverage / 100);
+          const { players: overlayPlayers, meta: adiMeta } = applyInjuryAdiOverlay(
+            players,
+            input.priorOutputs?.adiEvidence,
+          );
+          const data = computeInjuryIntelligence(overlayPlayers);
+          if (adiMeta.adiNotes.length > 0) {
+            data.factors.push(...adiMeta.adiNotes);
+          }
+          const confidenceValue = Math.min(1, (data.injuryCoverage / 100) * adiMeta.confidenceMultiplier);
 
           return engineSuccess({
             data,

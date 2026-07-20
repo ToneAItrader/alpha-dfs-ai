@@ -1,0 +1,24 @@
+{
+  "lines": [
+    {
+      "sourceId": "sportsbook-dk",
+      "gameKey": "KC-BUF",
+      "homeTeam": "KC",
+      "awayTeam": "BUF",
+      "total": 47.5,
+      "spread": -2.5,
+      "openSpread": -1.0,
+      "confidence": 0.88
+    },
+    {
+      "sourceId": "sportsbook-pinnacle",
+      "gameKey": "SF-DAL",
+      "homeTeam": "SF",
+      "awayTeam": "DAL",
+      "total": 44.0,
+      "spread": -3.5,
+      "openSpread": -3.0,
+      "confidence": 0.92
+    }
+  ]
+}
