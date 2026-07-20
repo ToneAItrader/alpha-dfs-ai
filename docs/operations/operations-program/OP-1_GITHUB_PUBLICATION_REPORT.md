@@ -4,7 +4,9 @@
 **Date:** 2026-07-19  
 **Executor:** Composer 2.5  
 **Release:** v2.2.0  
-**Status:** ⚠️ **Verified locally — publication blocked pending remote URL**
+**Status:** ⚠️ **Remote configured — publication blocked pending GitHub authentication**
+
+**Remote:** `https://github.com/ToneAItrader/alpha-dfs-ai.git`
 
 ---
 
@@ -18,8 +20,9 @@
 | Evidence package | JSON attached | [V2_2_CERTIFICATION_EVIDENCE_PACKAGE.json](../../architecture/V2_2_CERTIFICATION_EVIDENCE_PACKAGE.json) | ✅ |
 | RC summary | Attachable | [V2_2_RELEASE_CANDIDATE_SUMMARY.md](../../architecture/V2_2_RELEASE_CANDIDATE_SUMMARY.md) | ✅ |
 | Working tree | Clean | Clean | ✅ |
-| Git remote `origin` | Configured | **Not configured** | ❌ Blocker |
-| GitHub CLI | Authenticated | **Not installed** (see below) | ❌ Blocker |
+| Git remote `origin` | Configured | `https://github.com/ToneAItrader/alpha-dfs-ai.git` | ✅ |
+| GitHub push auth | Authenticated | **Not configured** (no SSH key; HTTPS auth failed) | ❌ Blocker |
+| GitHub CLI | Authenticated | **Not installed** | ❌ Blocker |
 
 ---
 
@@ -37,35 +40,51 @@ Tag correctly points to the **merge commit**, not post-merge documentation commi
 
 ## Publication blockers
 
-1. **No GitHub remote** — repository is local-only; no `github.com` URL found in project metadata.
-2. **GitHub CLI not available** — `gh` was not installed at execution time.
+1. **GitHub authentication required** — push failed: `Invalid username or token`. No SSH keys on this machine.
+2. **GitHub CLI not installed** — release must be created via `gh` or GitHub web UI after push.
 
 ---
 
-## Publish command (when ready)
+## Authenticate and publish (your machine)
 
-A one-step publisher is available:
+### Option A — GitHub CLI (recommended)
+
+```bash
+# Install gh (macOS)
+brew install gh
+
+# Authenticate
+gh auth login
+
+# Publish from repo root
+cd /Users/markboyle/Projects/alpha-dfs-ai
+./scripts/release/publish-github-release.sh
+```
+
+Remote is already set to `https://github.com/ToneAItrader/alpha-dfs-ai.git`.
+
+### Option B — Personal Access Token (HTTPS)
+
+1. GitHub → Settings → Developer settings → Personal access tokens → Generate (repo scope)
+2. Push:
 
 ```bash
 cd /Users/markboyle/Projects/alpha-dfs-ai
-
-# Install and authenticate GitHub CLI (once)
-brew install gh
-gh auth login
-
-# Publish (pass your repository URL)
-./scripts/release/publish-github-release.sh https://github.com/<org>/alpha-dfs-ai.git
+git push -u origin main
+git push origin v2.2.0
 ```
 
-The script verifies tag → merge commit, pushes `main` + `v2.2.0`, and creates the release with notes + attachments.
+3. Create release at: https://github.com/ToneAItrader/alpha-dfs-ai/releases/new?tag=v2.2.0
+   - Paste body from `docs/operations/releases/V2_2_RELEASE_NOTES.md`
+   - Attach `docs/architecture/V2_2_CERTIFICATION_EVIDENCE_PACKAGE.json`
 
-### Manual alternative
+### Option C — SSH
 
 ```bash
-git remote add origin https://github.com/<org>/alpha-dfs-ai.git
-git push origin main
-git push origin v2.2.0
-# Then create release in GitHub UI using V2_2_RELEASE_NOTES.md
+ssh-keygen -t ed25519 -C "your-email@example.com"
+# Add ~/.ssh/id_ed25519.pub to GitHub → Settings → SSH keys
+git remote set-url origin git@github.com:ToneAItrader/alpha-dfs-ai.git
+git push -u origin main && git push origin v2.2.0
 ```
 
 ---
@@ -84,6 +103,6 @@ git push origin v2.2.0
 
 ## Next action
 
-**Provide GitHub repository URL** → run OP-1 publish script → proceed to **OP-2 Staging Certification**.
+**Provide GitHub authentication** (PAT, `gh auth login`, or SSH key) → run `./scripts/release/publish-github-release.sh` → proceed to **OP-2 Staging Certification**.
 
 **Reference:** [RP-5_V2_2_GITHUB_RELEASE_REPORT.md](../release-program/RP-5_V2_2_GITHUB_RELEASE_REPORT.md)
