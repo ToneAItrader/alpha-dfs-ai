@@ -1,11 +1,11 @@
 # Alpha DFS AI — V2.2 Release Notes
 
-**Version:** v2.2.0 (Release Candidate)  
+**Version:** v2.2.0  
 **Release type:** Release Candidate  
 **Date:** 2026-07-19  
-**Branch:** `v2/v2.2-adi` (not merged to `main`)  
+**Branch:** `main` (merged from `v2/v2.2-adi`)  
 **Baseline:** V2.1 @ tag `v2.1.0` (`dd52641`)  
-**Head commit:** `3f06bed` (M7) · M8 validation docs pending commit
+**Merge commit:** `c409f75` · tag `v2.2.0`
 
 ---
 
